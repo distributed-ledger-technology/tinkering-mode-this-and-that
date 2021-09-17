@@ -14,6 +14,12 @@ Geht schnell per E-Mail, da aktuell kein KYC erforderlich ist
 Z.B. als BTC zu Bybit transferieren und dort zu USDT konvertieren
 
 ## Details zu 3
-Siehe Profil Icon rechts oben --> API --> Generate Key --> Name: "Cash" --> Alle Checkboxen aktivieren --> IP Adresse 65.21.110.40 eintragen 
+Siehe Profil Icon rechts oben --> API --> Generate Key 
+Für die dazu notwendige 2-factor authentifizierung könnt ihr die folgende crhome extension nutzen:   https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai
+
+Für den API Key bitte die folgenden parameter setzen:  
+Name: "Cash"  
+Alle Checkboxen aktivieren  
+IP Adresse 65.21.110.40 eintragen   
 
 
