@@ -17,13 +17,14 @@ Z.B. als BTC zu Bybit transferieren und dort zu USDT konvertieren
 Siehe Profil Icon rechts oben --> API --> Generate Key 
 Für die dazu notwendige 2-factor authentifizierung könnt ihr die folgende chrome extension nutzen:   https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai
 
+
+![Screenshot 2021-09-17 at 13 28 25](https://user-images.githubusercontent.com/43786652/133775242-6a797189-2539-4c28-b55d-8b4d46522ff5.png)
+
+
 Für den API Key bitte die folgenden parameter setzen:  
 Name: "Cash"  
 Alle Checkboxen aktivieren  
 IP Adresse 65.21.110.40 eintragen   
-
-
-![Screenshot 2021-09-17 at 13 28 25](https://user-images.githubusercontent.com/43786652/133775242-6a797189-2539-4c28-b55d-8b4d46522ff5.png)
 
 
 ![Screenshot 2021-09-17 at 13 26 23](https://user-images.githubusercontent.com/43786652/133775011-e04b30cd-e27b-403f-b7ef-e91b1fd6f321.png)
