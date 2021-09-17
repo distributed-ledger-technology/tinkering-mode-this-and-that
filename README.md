@@ -4,8 +4,8 @@ Um den Tradingbot zu nutzen sind die folgenden Schritte erforderlich:
 
 1. Account bei https://bybit.com erstellen  
 2. Startkapital (z.B. 100 Euro) als USDT auf dem Derivatives Account bei https://bybit.com bereitstellen  
-3. API Key generieren und an mich senden  
-
+3. API Key generieren und an mich senden   
+4. Leverage + Cross Margin konfigurieren  
 
 ## Details zu 1
 Geht schnell per E-Mail, da aktuell kein KYC erforderlich ist
@@ -28,3 +28,8 @@ IP Adresse 65.21.110.40 eintragen
 
 
 ![Screenshot 2021-09-17 at 13 26 23](https://user-images.githubusercontent.com/43786652/133775011-e04b30cd-e27b-403f-b7ef-e91b1fd6f321.png)
+
+
+## Details zu 4
+
+![Screenshot 2021-09-17 at 17 39 24](https://user-images.githubusercontent.com/43786652/133816052-e0f0c5f7-bfe1-4d96-ac41-3d1b3aca51df.png)
