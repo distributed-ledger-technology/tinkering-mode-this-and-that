@@ -10,7 +10,9 @@ Um den Tradingbot zu nutzen sind die folgenden Schritte erforderlich:
 ## Deal History
 http://65.21.110.40:3001/getAccountInfo/apiKey/DEINAPIKeyHierEinsetzen abrufen.   
 
-Für den Demo API Key GCNuPXHiTsX5FTEDhV z.B. http://65.21.110.40:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV
+Für den Demo API Key GCNuPXHiTsX5FTEDhV z.B. http://65.21.110.40:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV  
+
+Wichtig: Die Uhrzeit der Transaktionen kommt in UTC (ref. https://time.is/UTC+2)
   
 ## Details zu 1
 Geht schnell per E-Mail, da aktuell kein KYC erforderlich ist
