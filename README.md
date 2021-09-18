@@ -7,6 +7,8 @@ Um den Tradingbot zu nutzen sind die folgenden Schritte erforderlich:
 3. API Key generieren und an mich senden   
 4. Leverage + Cross Margin konfigurieren  
 
+Die DealHistory und weitere Kennzahlen kannst Du jederzeit unter http://65.21.110.40:3001/getAccountInfo/apiKey/<yourapikey> abrufen.   
+  
 ## Details zu 1
 Geht schnell per E-Mail, da aktuell kein KYC erforderlich ist
 
