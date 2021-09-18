@@ -12,7 +12,9 @@ http://65.21.110.40:3001/getAccountInfo/apiKey/DEINAPIKeyHierEinsetzen abrufen.
 
 Für den Demo API Key GCNuPXHiTsX5FTEDhV z.B. http://65.21.110.40:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV  
 
-Wichtig: Die Uhrzeit der Transaktionen kommt in UTC (ref. https://time.is/UTC+2)
+Wichtig: Die Uhrzeit der Transaktionen kommt in UTC (ref. https://time.is/UTC+2)  
+
+Empfehlung: Nutze https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc/related für eine klare Darstellung im Browser.
   
 ## Details zu 1
 Geht schnell per E-Mail, da aktuell kein KYC erforderlich ist
