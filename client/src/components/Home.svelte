@@ -9,14 +9,13 @@
 
   // import InputField from './InputField.svelte';
 
-  let accountInfo, apiKey
-  onMount(async () => {
-    const urlParams = new URLSearchParams(window.location.search)
-    apiKey = urlParams.get('apikey');
-    const url = `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`
-    // alert(`reading data from ${url}`)
+    let accountInfo
+    let apiKey = ""
+  
+    async function los() {
+    // const urlParams = new URLSearchParams(window.location.search)
     try {
-
+      const url = `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
       accountInfo = await(await fetch(url)).json()
       console.log(accountInfo)
     }catch(error) {
@@ -24,11 +23,20 @@
     }
 
 
-	})
+	}
 </script>
 
-<h1>Hello Friend with APIKey {apiKey}</h1>
+<h1>Trading Bot Statistics</h1> 
+  
+Enter Your API Key <p></p>
+Example Key: <br><br> GCNuPXHiTsX5FTEDhV <p><br></p>
+<input type="text" name="" id="" bind:value={apiKey}>
 
+
+
+<button on:click={los}>
+  Los
+</button>
 <p>
   <!-- <InputField /> -->
 </p>
