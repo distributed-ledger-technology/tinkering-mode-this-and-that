@@ -14,7 +14,7 @@
     const urlParams = new URLSearchParams(window.location.search)
     apiKey = urlParams.get('apikey');
     // const url = `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`
-    const url = `http://65.21.110.40/:3001/getAccountInfo/apiKey/${apiKey}`
+    const url = `http://65.21.110.40:3001/getAccountInfo/apiKey/${apiKey}`
     // alert(`reading data from ${url}`)
     try {
 
@@ -28,7 +28,11 @@
 	})
 </script>
 
-<h1>Hello Friend with APIKey {apiKey}</h1>
+<h1>Hello Friend </h1> 
+  
+<h4>
+  your APIKey: {apiKey}
+</h4>
 
 <p>
   <!-- <InputField /> -->
