@@ -19,7 +19,7 @@ jobs:
 
       - name: Build
         run: |
-          cd data-adapter
+          cd client
           deno run --allow-run --allow-read https://deno.land/x/snel/install.ts
           trex run build
       - name: Deploy
