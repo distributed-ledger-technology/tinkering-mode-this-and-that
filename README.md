@@ -8,6 +8,8 @@ Um den Tradingbot zu nutzen sind die folgenden Schritte erforderlich:
 4. Leverage 100 (long + short) + Cross Margin konfigurieren  
 
 ## Deal History
+Svelte based UI deployed using GitHub Actions provided via GitHub Pages coming soon.
+
 http://65.21.110.40:3001/getAccountInfo/apiKey/DEINAPIKeyHierEinsetzen abrufen.   
 
 Für den Demo API Key GCNuPXHiTsX5FTEDhV z.B. http://65.21.110.40:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV  
