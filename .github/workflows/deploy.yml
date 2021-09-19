@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: |
           cd client
-          sudo deno run --allow-run --allow-read https://deno.land/x/snel/install.ts
+          deno run --allow-run --allow-read https://deno.land/x/snel/install.ts
           sudo trex run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3 # https://github.com/marketplace/actions/deploy-to-github-pages
