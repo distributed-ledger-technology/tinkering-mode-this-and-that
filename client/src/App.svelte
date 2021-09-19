@@ -9,17 +9,25 @@
 
 </script>
 
-<main transition:fade>
-  <Home/>
-  <p><br></p>
+<body>
+  
 
-</main>
+  <main transition:fade>
+    <Home/>
+    <p><br></p>
+    
+  </main>
+</body>
 
 <style>
+
+body {
+  overflow: scroll; /* Show scrollbars */
+}
+  
   main {
     text-align: center;
     padding: 1em;
-    max-width: 240px;
     margin: 0 auto;
   }
 
