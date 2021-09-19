@@ -27,10 +27,10 @@
 	}
 </script>
 
-<h1>Trading Bot Statistics</h1> 
+<h1>For Friends Only</h1> 
   
 Enter Your API Key <p></p>
-Example Key: <br><br> GCNuPXHiTsX5FTEDhV <p><br></p>
+Example Key (Demo Account): <br><br> GCNuPXHiTsX5FTEDhV <p><br></p>
 <input type="text" name="" id="" bind:value={apiKey}>
 
 

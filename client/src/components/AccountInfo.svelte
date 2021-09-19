@@ -15,28 +15,20 @@ export let accountInfo
     <th>Equity</th>
     <th>Available</th>
     <th>Long Position Size</th>
-    <th>Long Position PNL in %</th>
+    <th>Unrealized Long Position PNL in %</th>
     <th>Short Position Size</th>
-    <th>Short Position PNL %</th>
-    <th>O Unr PNL in %</th>
+    <th>Unrealized Short Position PNL %</th>
   </tr>
 
   <tr>
-    <!-- <td>{accountInfo.equity.toFixed(2)}</td>
+    <td>{accountInfo.equity.toFixed(2)}</td>
     <td>{accountInfo.avaliableBalance.toFixed(2)}</td>
     <td>{accountInfo.longPositionSize.toFixed(2)}</td>
     <td>{accountInfo.longPositionPNLInPercent.toFixed(2)}</td>
     <td>{accountInfo.shortPositionSize.toFixed(2)}</td>
     <td>{accountInfo.shortPositionPNLInPercent.toFixed(2)}</td>
-    <td>{accountInfo.overallUnrealizedPNL.toFixed(2)}</td> -->
-    <td>{accountInfo.equity}</td>
-    <td>{accountInfo.avaliableBalance}</td>
-    <td>{accountInfo.longPositionSize}</td>
-    <td>{accountInfo.longPositionPNLInPercent}</td>
-    <td>{accountInfo.shortPositionSize}</td>
-    <td>{accountInfo.shortPositionPNLInPercent}</td>
-    <td>{accountInfo.overallUnrealizedPNL}</td>
   </tr>
+
 </table>
 
 <p><br></p>
