@@ -14,7 +14,7 @@
     const urlParams = new URLSearchParams(window.location.search)
     apiKey = urlParams.get('apikey');
     // const url = `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`
-    const url = `http://65.21.110.40:3001/getAccountInfo/apiKey/${apiKey}`
+    const url = `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
     // alert(`reading data from ${url}`)
     try {
 
