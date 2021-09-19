@@ -23,9 +23,9 @@ export let accountInfo
   <tr>
     <td>{accountInfo.equity.toFixed(2)}</td>
     <td>{accountInfo.avaliableBalance.toFixed(2)}</td>
-    <td>{accountInfo.longPositionSize.toFixed(2)}</td>
+    <td>{accountInfo.longPositionSize}</td>
     <td>{accountInfo.longPositionPNLInPercent.toFixed(2)}</td>
-    <td>{accountInfo.shortPositionSize.toFixed(2)}</td>
+    <td>{accountInfo.shortPositionSize}</td>
     <td>{accountInfo.shortPositionPNLInPercent.toFixed(2)}</td>
   </tr>
 
