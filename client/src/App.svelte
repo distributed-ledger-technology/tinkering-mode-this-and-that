@@ -1,0 +1,32 @@
+<script>
+  import Home from "@/components/Home.svelte";
+  import Party from "@/components/Party.svelte";
+  // import { page } from '$app/stores'
+  import { fade } from "svelte/transition";
+
+  // const apiKey = $page.query.get('apiKey')
+
+// let apiKey = 123
+
+</script>
+
+<main transition:fade>
+  <Home/>
+  <p><br></p>
+  <Party/>
+</main>
+
+<style>
+  main {
+    text-align: center;
+    padding: 1em;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    main {
+      max-width: none;
+    }
+  }
+</style>
