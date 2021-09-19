@@ -8,15 +8,14 @@ Um den Tradingbot zu nutzen sind die folgenden Schritte erforderlich:
 4. Leverage 100 (long + short) + Cross Margin konfigurieren  
 
 ## Deal History
-Svelte based UI deployed using GitHub Actions provided via GitHub Pages coming soon.
 
-http://65.21.110.40:3001/getAccountInfo/apiKey/DEINAPIKeyHierEinsetzen abrufen.   
+Der Tradingbot erläutert jeden deal, den er macht, damit seine entscheidungen weitgehend nachvollziehbar sind.  
+  
+**Hier kannst Du die entsprechende deal history checken:**  
+https://openforce.de/
 
-Für den Demo API Key GCNuPXHiTsX5FTEDhV z.B. http://65.21.110.40:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV  
+Wichtig: Die Uhrzeit der Transaktionen kommt in UTC (vgl. https://time.is/UTC+2)  
 
-Wichtig: Die Uhrzeit der Transaktionen kommt in UTC (ref. https://time.is/UTC+2)  
-
-Empfehlung: Nutze https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc/related für eine klare Darstellung im Browser.
   
 ## Details zu 1
 Geht schnell per E-Mail, da aktuell kein KYC erforderlich ist
