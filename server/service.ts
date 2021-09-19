@@ -4,7 +4,7 @@ export class StatisticsService {
 
     public async getAccountInfo(apiKey: string): Promise<any> {
 
-        const accountInfo = await Persistence.readFromLocalFile(`${Deno.cwd()}/stats/${apiKey}.json`)
+        const accountInfo = await Persistence.readFromLocalFile(`${Deno.cwd()}/../deno-cash/cash/stats/${apiKey}.json`)
 
         console.log(accountInfo)
         return accountInfo
