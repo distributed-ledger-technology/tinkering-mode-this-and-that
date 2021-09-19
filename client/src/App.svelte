@@ -1,6 +1,5 @@
 <script>
   import Home from "@/components/Home.svelte";
-  import Party from "@/components/Party.svelte";
   // import { page } from '$app/stores'
   import { fade } from "svelte/transition";
 
@@ -13,7 +12,7 @@
 <main transition:fade>
   <Home/>
   <p><br></p>
-  <Party/>
+
 </main>
 
 <style>

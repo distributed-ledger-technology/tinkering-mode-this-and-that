@@ -4,6 +4,7 @@
 <!-- http://localhost:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV -->
 <script>
   import AccountInfo from "@/components/AccountInfo.svelte";
+  import Party from "@/components/Party.svelte";
 
 	import { onMount } from 'svelte';
 
@@ -43,10 +44,13 @@ Example Key: <br><br> GCNuPXHiTsX5FTEDhV <p><br></p>
 <p>
   
     {#if accountInfo !== undefined}
-    <AccountInfo bind:accountInfo/>
-      
+      <AccountInfo bind:accountInfo/>
+    {:else}
+      <Party/>
     {/if}
-
+    
+    
+      
 
   
 </p>
