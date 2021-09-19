@@ -15,7 +15,7 @@
     apiKey = urlParams.get('apikey');
     // const url = `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`
     const url = `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
-    // alert(`reading data from ${url}`)
+    alert(`reading data from ${url}`)
     try {
 
       accountInfo = await(await fetch(url)).json()
