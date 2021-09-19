@@ -13,7 +13,7 @@
     let apiKey = ""
   
     async function los() {
-    const urlParams = new URLSearchParams(window.location.search)
+    // const urlParams = new URLSearchParams(window.location.search)
     try {
       const url = `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
       accountInfo = await(await fetch(url)).json()
