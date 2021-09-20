@@ -27,7 +27,7 @@
         <td>{deal.reduceOnly}</td>
         <td>{deal.reason}</td>
         <td>{deal.asset}</td>
-        <td>{deal.equityBeforeThisDeal}</td>
+        <td>{deal.equityBeforeThisDeal.toFixed(2)}</td>
       
         <tr>
       {/each}
