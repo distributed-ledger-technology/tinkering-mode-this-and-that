@@ -1,15 +1,23 @@
 import { opine, serveStatic } from "https://deno.land/x/opine@1.7.0/mod.ts"
-import { opineCors } from "https://deno.land/x/cors/mod.ts";
+import { opineCors } from "https://deno.land/x/cors@v1.2.1/mod.ts";
 import { StatisticsService } from "./service.ts"
 
 const app = opine()
 
-app.use(opineCors())
+// app.use(opineCors()) // decided to do this for single routes explicitely
 
 const pathToFile = `${Deno.cwd()}/client/dist`
 app.use(serveStatic(pathToFile))
 
 const statisticsService = new StatisticsService()
+
+let pathToStats = ''
+
+if (Deno.args[0] === '3001') {
+    pathToStats = `${Deno.cwd()}/stats/`
+} else {
+    pathToStats = `${Deno.cwd()}/../deno-cash/cash/stats`
+}
 
 app.get("/", async function (req, res) {
 
@@ -20,10 +28,10 @@ app.get("/", async function (req, res) {
 })
 
 // http://localhost:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV
-app.get("/getAccountInfo/apiKey/:apiKey", async function (req, res) {
+app.get("/getAccountInfo/apiKey/:apiKey", opineCors(), async function (req, res) {
     console.log(`reading account info for ${req.params.apiKey}`)
     try {
-        res.send(await statisticsService.getAccountInfo(req.params.apiKey));
+        res.send(await statisticsService.getAccountInfo(req.params.apiKey, pathToStats));
     } catch (error) {
         res.send("Bitte füge Deinen API Key am Ende der URL ein, um Deine Daten abzurufen.")
     }

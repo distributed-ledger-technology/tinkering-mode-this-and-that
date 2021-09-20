@@ -18,18 +18,22 @@
     <th>Asset</th>
     <th>Equity Before This Deal</th>
   </tr>
-  {#each accountInfo.dealHistory as deal}
-  <tr>
-    <td>{deal.utcTime}</td>
-    <td>{deal.side}</td>
-    <td>{deal.reduceOnly}</td>
-    <td>{deal.reason}</td>
-    <td>{deal.asset}</td>
-    <td>{deal.equityBeforeThisDeal}</td>
-   
-    <tr>
-  {/each}
+  
+  
+    {#each accountInfo.dealHistory as deal}
+      <tr>
+        <td>{deal.utcTime}</td>
+        <td>{deal.side}</td>
+        <td>{deal.reduceOnly}</td>
+        <td>{deal.reason}</td>
+        <td>{deal.asset}</td>
+        <td>{deal.equityBeforeThisDeal}</td>
+      
+        <tr>
+      {/each}
+  
 </table>
+
 
 <style>
 table {

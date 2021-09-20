@@ -16,10 +16,17 @@
     async function los() {
     // const urlParams = new URLSearchParams(window.location.search)
     try {
-      const url = `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
+      let url = ''
+      if (window.location == 'http://localhost:3027/') {
+        url = `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`
+      } else {
+        url = `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
+      }
+      console.log(`calling ${url}`)
       accountInfo = await(await fetch(url)).json()
       console.log(accountInfo)
     }catch(error) {
+      console.log(error.message)
       alert(`I could not get any data for api key ${apiKey}`)
     }
 
