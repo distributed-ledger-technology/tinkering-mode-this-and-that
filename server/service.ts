@@ -6,7 +6,7 @@ export class StatisticsService {
 
         const accountInfo = await Persistence.readFromLocalFile(`${pathToStats}/${apiKey}.json`)
 
-        console.log(accountInfo)
+        // console.log(accountInfo)
         return accountInfo
 
     }
