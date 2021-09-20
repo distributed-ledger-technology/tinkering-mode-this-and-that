@@ -13,15 +13,21 @@
     let accountInfo
     let apiKey = ""
   
-    async function los() {
-    // const urlParams = new URLSearchParams(window.location.search)
+    function getDataSourceURL() {
+
+      if (window.location == 'http://localhost:3027/') { // for maintenance 
+
+        return `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`
+
+      } 
+
+      return `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
+      
+    }
+
+    async function getAccountInfo() {
     try {
-      let url = ''
-      if (window.location == 'http://localhost:3027/') {
-        url = `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`
-      } else {
-        url = `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
-      }
+      const url = getDataSourceURL()
       console.log(`calling ${url}`)
       accountInfo = await(await fetch(url)).json()
       console.log(accountInfo)
@@ -29,9 +35,16 @@
       console.log(error.message)
       alert(`I could not get any data for api key ${apiKey}`)
     }
-
-
 	}
+
+  onMount(async () => {
+    setInterval(async()=> {
+      if (apiKey !== '') {
+        await getAccountInfo()
+      }
+    }, 8 * 1000)
+	});
+
 </script>
 
 <h1>For Friends Only</h1> 
@@ -42,7 +55,7 @@ Example Key (Demo Account): <br><br> GCNuPXHiTsX5FTEDhV <p><br></p>
 
 
 
-<button on:click={los}>
+<button on:click={getAccountInfo}>
   Los
 </button>
 <p>
