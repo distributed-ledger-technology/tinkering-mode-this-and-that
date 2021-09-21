@@ -7,7 +7,7 @@
 
 </script>
 
-<h2>Deal History</h2>
+<h2>Last 100 Deals</h2>
 
 <table>
   <tr>
