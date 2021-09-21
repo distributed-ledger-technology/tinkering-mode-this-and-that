@@ -50,7 +50,7 @@
 <h1>For Friends Only</h1> 
   
 Enter Your API Key <p></p>
-Example Key (Demo Account): <br><br> GCNuPXHiTsX5FTEDhV <p><br></p>
+Example Key (Demo Account): <br><br> LrOBK76cwtcaetdcxo <p><br></p>
 <input type="text" name="" id="" bind:value={apiKey}>
 
 
