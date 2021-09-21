@@ -22,7 +22,7 @@
   
     {#each accountInfo.dealHistory as deal}
       <tr>
-        <td>{deal.utcTime}</td>
+        <td>{deal.utcTime.split('.')[0].replace('T',' ')}</td>
         <td>{deal.side}</td>
         <td>{deal.reduceOnly}</td>
         <td>{deal.reason}</td>
