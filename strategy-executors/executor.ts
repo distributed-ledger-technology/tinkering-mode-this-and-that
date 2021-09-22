@@ -24,6 +24,16 @@ export class Executor {
             await this.exchangeConnector.sellFuture(this.pair, howMuchToAddToShortPosition, false)
         }
 
+        const howMuchToCloseFromLongPosition = await this.howMuchShallIAddToLongPosition(decisionBasis)
+        if (howMuchToCloseFromLongPosition > 0) {
+            await this.exchangeConnector.sellFuture(this.pair, howMuchToCloseFromLongPosition, true)
+        }
+
+        const howMuchToCloseFromShortPosition = await this.howMuchShallIAddToLongPosition(decisionBasis)
+        if (howMuchToCloseFromShortPosition > 0) {
+            await this.exchangeConnector.buyFuture(this.pair, howMuchToCloseFromShortPosition, true)
+        }
+
     }
 
 
