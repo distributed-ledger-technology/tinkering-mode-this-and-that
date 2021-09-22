@@ -1,19 +1,46 @@
+import { IExchangeConnector } from '../utilities/exchange-connectors/exchange-connector-interface.ts'
+import { IDecisionBasis } from "./interfaces.ts";
+
+
 export class Executor {
 
+    private readonly pair = 'BTCUSDT' // can be made flexible soon
+    private decisionBasis: IDecisionBasis
 
-    public howMuchShallIAddToLongPosition(decisionBasis: any): Promise<number> | number {
+    public constructor(private exchangeConnector: IExchangeConnector) {
+        this.decisionBasis = { data: { longShorDelta: 10, liquidityLevel: 5 } } // just to have an example for now
+    }
+
+
+    public async executeStrategy(decisionBasis: IDecisionBasis): Promise<void> {
+
+        const howMuchToAddToLongPosition = await this.howMuchShallIAddToLongPosition(decisionBasis)
+        if (howMuchToAddToLongPosition > 0) {
+            await this.exchangeConnector.buyFuture(this.pair, howMuchToAddToLongPosition, false)
+        }
+
+        const howMuchToAddToShortPosition = await this.howMuchShallIAddToLongPosition(decisionBasis)
+        if (howMuchToAddToShortPosition > 0) {
+            await this.exchangeConnector.sellFuture(this.pair, howMuchToAddToShortPosition, false)
+        }
+
+    }
+
+
+    public howMuchShallIAddToLongPosition(decisionBasis: IDecisionBasis): Promise<number> | number {
         return 0
     }
 
-    public howMuchShallIAddToShortPosition(decisionBasis: any): Promise<number> | number {
+    public howMuchShallIAddToShortPosition(decisionBasis: IDecisionBasis): Promise<number> | number {
         return 0
     }
 
-    public howMuchShallICloseFromLongPosition(decisionBasis: any): Promise<number> | number {
+    public howMuchShallICloseFromLongPosition(decisionBasis: IDecisionBasis): Promise<number> | number {
         return 0
     }
 
-    public howMuchShallICloseFromShortPosition(decisionBasis: any): Promise<number> | number {
+    public howMuchShallICloseFromShortPosition(decisionBasis: IDecisionBasis): Promise<number> | number {
         return 0
     }
+
 }
