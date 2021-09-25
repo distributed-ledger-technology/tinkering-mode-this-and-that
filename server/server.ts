@@ -85,7 +85,7 @@ app.post("/addToPosition", opineCors(), async function (req, res) {
 
         accountInfoCash.dealHistory.push(deal)
 
-        await Persistence.saveToLocalFile(pathToDataFile, JSON.stringify(accountInfoCash))
+        void Persistence.saveToLocalFile(pathToDataFile, JSON.stringify(accountInfoCash))
 
     }
 
