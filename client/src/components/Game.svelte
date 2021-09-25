@@ -42,10 +42,9 @@
     
     console.log(`calling ${url}`)
     
-    const response = await(await fetch(url, options)).json()
-    console.log(response)
+    await fetch(url, options)
 
-    alert(`done - shall be visible here in about 8 seconds`)
+    alert(`deal triggered - shall be visible here in about 8 seconds`)
 
   }
 
