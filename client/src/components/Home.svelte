@@ -50,8 +50,17 @@
 
 <h1>For Friends Only</h1> 
   
-Enter Your API Key <p></p>
-Example Key (Demo Account): <br><br> LrOBK76cwtcaetdcxo <p><br></p>
+Enter Your API Key 
+
+<p></p>
+
+Example Key (Demo Account): 
+<br><br> 
+
+LrOBK76cwtcaetdcxo 
+
+<p><br></p>
+
 <input type="text" name="" id="" bind:value={apiKey}>
 
 
@@ -59,25 +68,18 @@ Example Key (Demo Account): <br><br> LrOBK76cwtcaetdcxo <p><br></p>
 <button on:click={getAccountInfo}>
   Los
 </button>
+
 <p>
-  <!-- <InputField /> -->
-</p>
-<p>
-  
   
   {#if accountInfo !== undefined}
       <br>
       <Game bind:apiKey/> 
       <br>
       <AccountInfo bind:accountInfo/>
-    {:else}
+  {:else}
       <Party/>
-    {/if}
+  {/if}
     
-    
-      
-
-  
 </p>
 
 <link
