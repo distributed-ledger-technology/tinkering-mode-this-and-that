@@ -42,7 +42,7 @@
     
     console.log(`calling ${url}`)
     
-    await fetch(url, options)
+    fetch(url, options)
 
     alert(`deal triggered - shall be visible here in about 8 seconds`)
 
