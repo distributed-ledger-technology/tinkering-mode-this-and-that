@@ -29,9 +29,7 @@
     async function getAccountInfo() {
     try {
       const url = getDataSourceURL()
-      console.log(`calling ${url}`)
       accountInfo = await(await fetch(url)).json()
-      console.log(accountInfo)
     }catch(error) {
       console.log(error.message)
       alert(`I could not get any data for api key ${apiKey}`)

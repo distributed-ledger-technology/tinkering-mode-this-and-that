@@ -40,11 +40,13 @@
 
     const url = getGamingURL()
     
+    console.log(`calling ${url}`)
+    
     const response = await(await fetch(url, options)).json()
     console.log(response)
 
     alert(`done - shall be visible here in about 8 seconds`)
-    
+
   }
 
   function getGamingURL() {
