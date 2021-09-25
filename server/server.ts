@@ -3,7 +3,7 @@ import { opineCors } from "https://deno.land/x/cors@v1.2.1/mod.ts";
 import { Service } from "./service.ts"
 import { BybitConnector } from "../utilities/exchange-connectors/bybit-connector.ts";
 import { IDeal } from "./interfaces.ts";
-import { Persistence } from "https://deno.land/x/persistence@v1.4.1/persistence.ts";
+// import { Persistence } from "https://deno.land/x/persistence@v1.4.1/persistence.ts";
 
 const app = opine()
 
@@ -45,14 +45,13 @@ app.post("/addToPosition", opineCors(), async function (req, res) {
 
     const pathToDataFile = `${`${Deno.cwd()}/../deno-cash/cash/stats`}/${req.body.apiKey}.json`
 
-    const accountInfoCash = JSON.parse(await Persistence.readFromLocalFile(pathToDataFile))
+    // const accountInfoCash = JSON.parse(await Persistence.readFromLocalFile(pathToDataFile))
 
-    if (accountInfoCash === undefined || accountInfoCash.dealHistory === undefined) {
-        throw new Error(`I do not know you.`)
-    }
+    // if (accountInfoCash === undefined || accountInfoCash.dealHistory === undefined) {
+    //     throw new Error(`I do not know you.`)
+    // }
 
     console.log(`adding ${req.body.amount} to BTC ${req.body.side} for ${req.body.apiKey} ${req.body.apiSecret}`)
-    // console.log(`adding to position ${JSON.stringify(await req.body)}`)
 
     const bybitConnector = new BybitConnector(req.body.apiKey, req.body.apiSecret)
 
@@ -67,25 +66,24 @@ app.post("/addToPosition", opineCors(), async function (req, res) {
 
     if (result.ret_code === 0) {
 
-        console.log(accountInfoCash)
-        const accountInfo = await bybitConnector.getFuturesAccountData()
+        // const accountInfo = await bybitConnector.getFuturesAccountData()
 
-        const deal: IDeal = {
-            utcTime: new Date().toISOString(),
-            side: 'Sell',
-            reduceOnly: false,
-            reason: `manually triggered deal via ${req.protocol + '://' + req.get('host') + req.originalUrl}`,
-            asset: 'BTCUSDT',
-            equityBeforeThisDeal: accountInfo.result.USDT.equity
+        // const deal: IDeal = {
+        //     utcTime: new Date().toISOString(),
+        //     side: 'Sell',
+        //     reduceOnly: false,
+        //     reason: `manually triggered deal via ${req.protocol + '://' + req.get('host') + req.originalUrl}`,
+        //     asset: 'BTCUSDT',
+        //     equityBeforeThisDeal: accountInfo.result.USDT.equity
 
-        }
+        // }
 
-        accountInfoCash.dealHistory.splice(0, accountInfoCash.dealHistory.length - 100)
+        // accountInfoCash.dealHistory.splice(0, accountInfoCash.dealHistory.length - 100)
 
 
-        accountInfoCash.dealHistory.push(deal)
+        // accountInfoCash.dealHistory.push(deal)
 
-        void Persistence.saveToLocalFile(pathToDataFile, JSON.stringify(accountInfoCash))
+        // void Persistence.saveToLocalFile(pathToDataFile, JSON.stringify(accountInfoCash))
 
     }
 
