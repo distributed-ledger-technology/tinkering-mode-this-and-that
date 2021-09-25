@@ -43,6 +43,8 @@
     const response = await(await fetch(url, options)).json()
     console.log(response)
 
+    alert(`done - shall be visible here in about 8 seconds`)
+    
   }
 
   function getGamingURL() {
@@ -53,7 +55,7 @@
 
   } 
 
-  return `https://openforce.de/addToPosition/apiKey`
+  return `https://openforce.de/addToPosition`
 
 }
 
