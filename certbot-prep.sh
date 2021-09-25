@@ -1,4 +1,5 @@
 # inspired by https://certbot.eff.org/lets-encrypt/ubuntufocal-other
+
 sudo apt update
 sudo apt install snapd
 sudo snap install core; sudo snap refresh core
