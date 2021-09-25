@@ -43,7 +43,7 @@ app.get("/getAccountInfo/apiKey/:apiKey", opineCors(), async function (req, res)
 
 app.post("/addToPosition", opineCors(), async function (req, res) {
 
-    const pathToDataFile = `${`${Deno.cwd()}/stats`}/${req.body.apiKey}.json`
+    const pathToDataFile = `${`${Deno.cwd()}/../deno-cash/cash/stats`}/${req.body.apiKey}.json`
 
     const accountInfoCash = JSON.parse(await Persistence.readFromLocalFile(pathToDataFile))
 
