@@ -39,6 +39,8 @@ onMount(async () => {
 
 </script>
 
+{#if deals.length > 0}
+  
 <h2>Last 100 Deals</h2>
 
 <table>
@@ -65,7 +67,7 @@ onMount(async () => {
       {/each}
   
 </table>
-
+{/if}
 
 <style>
 table {
