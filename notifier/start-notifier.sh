@@ -1,0 +1,1 @@
+deno run --allow-net --allow-read --allow-write --unstable notifier/notifier.ts mongouser mongopw bottoken targetchat
