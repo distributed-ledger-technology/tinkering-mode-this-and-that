@@ -40,19 +40,19 @@ app.get("/getAccountInfo/apiKey/:apiKey", opineCors(), async function (req, res)
     }
 })
 
-// http://localhost:3001/getDeals/apiKey/GCNuPXHiTsX5FTEDhV
+// http://localhost:3001/getDeals/apiKey/LrOBK76cwtcaetdcxo
 app.get("/getDeals/apiKey/:apiKey", opineCors(), async function (req, res) {
     console.log(`reading account info for ${req.params.apiKey}`)
     try {
-        res.send(await statisticsService.getAccountInfo(req.params.apiKey, pathToStats));
+        res.send(await statisticsService.getDeals(req.params.apiKey));
     } catch (error) {
-        res.send("Bitte füge Deinen API Key am Ende der URL ein, um Deine Daten abzurufen.")
+        res.send(`wtf :) ${error.message}`)
     }
 })
 
 // http://localhost:3001/getAssetsUnderManagement
 app.get("/getAssetsUnderManagement", opineCors(), async function (req, res) {
-    console.log(`reading account info for ${req.params.apiKey}`)
+
     try {
         const assetsUnderManagement = await statisticsService.getAssetsUnderManagement(req.params.apiKey, pathToStats)
         let equitySum = 0
@@ -100,12 +100,15 @@ if (Deno.args[0] === '443') {
 
 
     mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
+
+    console.log(mongodbConnectionString)
     statisticsService = new Service(mongodbConnectionString)
     app.listen(options, () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
 
 } else {
-    mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@65.21.110.40:27017`
     // mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
+    mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@65.21.110.40:27017`
+    console.log(mongodbConnectionString)
     statisticsService = new Service(mongodbConnectionString)
     app.listen(Number(Deno.args[0]), () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
 }

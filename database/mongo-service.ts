@@ -62,7 +62,7 @@ export class MongoService {
 
         if (!this.initialized) await this.initialize()
 
-        return MongoService.dealCollection.findMany({ apiKey })
+        return MongoService.dealCollection.find({ apiKey }).toArray()
 
     }
 
