@@ -2,8 +2,6 @@ import { json, opine, serveStatic } from "https://deno.land/x/opine@1.7.0/mod.ts
 import { opineCors } from "https://deno.land/x/cors@v1.2.1/mod.ts";
 import { Service } from "./service.ts"
 import { BybitConnector } from "../utilities/exchange-connectors/bybit-connector.ts";
-import { IDeal } from "./interfaces.ts";
-// import { Persistence } from "https://deno.land/x/persistence@v1.4.1/persistence.ts";
 
 const app = opine()
 
@@ -43,49 +41,9 @@ app.get("/getAccountInfo/apiKey/:apiKey", opineCors(), async function (req, res)
 
 app.post("/addToPosition", opineCors(), async function (req, res) {
 
-    const pathToDataFile = `${`${Deno.cwd()}/../deno-cash/cash/stats`}/${req.body.apiKey}.json`
+    const reason = `manually triggered deal via ${req.protocol + '://' + req.get('host') + req.originalUrl}`
 
-    // const accountInfoCash = JSON.parse(await Persistence.readFromLocalFile(pathToDataFile))
-
-    // if (accountInfoCash === undefined || accountInfoCash.dealHistory === undefined) {
-    //     throw new Error(`I do not know you.`)
-    // }
-
-    console.log(`adding ${req.body.amount} to BTC ${req.body.side} for ${req.body.apiKey} ${req.body.apiSecret}`)
-
-    const bybitConnector = new BybitConnector(req.body.apiKey, req.body.apiSecret)
-
-    let result
-    if (req.body.side === 'long') {
-        result = await bybitConnector.buyFuture(`BTCUSDT`, req.body.amount, false)
-    } else if (req.body.side === 'short') {
-        result = await bybitConnector.sellFuture(`BTCUSDT`, req.body.amount, false)
-    }
-
-    console.log(result)
-
-    if (result.ret_code === 0) {
-
-        // const accountInfo = await bybitConnector.getFuturesAccountData()
-
-        // const deal: IDeal = {
-        //     utcTime: new Date().toISOString(),
-        //     side: 'Sell',
-        //     reduceOnly: false,
-        //     reason: `manually triggered deal via ${req.protocol + '://' + req.get('host') + req.originalUrl}`,
-        //     asset: 'BTCUSDT',
-        //     equityBeforeThisDeal: accountInfo.result.USDT.equity
-
-        // }
-
-        // accountInfoCash.dealHistory.splice(0, accountInfoCash.dealHistory.length - 100)
-
-
-        // accountInfoCash.dealHistory.push(deal)
-
-        // void Persistence.saveToLocalFile(pathToDataFile, JSON.stringify(accountInfoCash))
-
-    }
+    await statisticsService.addToPosition(req.body.apiKey, req.body.apiSecret, req.body.side, req.body.amount, reason)
 
 })
 

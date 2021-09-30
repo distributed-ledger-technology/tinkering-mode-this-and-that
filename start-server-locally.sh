@@ -1,1 +1,0 @@
-deno run --allow-net --allow-read --allow-write server/server.ts 3001

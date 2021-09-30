@@ -1,0 +1,1 @@
+deno run --allow-net --unstable database/manual-tests.ts
