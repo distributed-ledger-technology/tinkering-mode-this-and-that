@@ -4,16 +4,28 @@ import { AccountInfoSchema, DealSchema } from "./interfaces.ts"
 
 export class MongoService {
 
-    private static initialized = false
     private static client = new MongoClient()
     private static db: Database
     private static accountInfosCollection: any
     private static dealCollection: any
+    private initialized = false
 
 
-    public static async initialize(connectionURL: string) {
+    public constructor(private mongoDBConnectionURL: string) { }
 
-        await MongoService.client.connect(connectionURL)
+    public async dropCollection(collectionName: string): Promise<any> {
+
+        if (!this.initialized) await this.initialize()
+
+        const collectionToBeDropped = MongoService.db.collection<AccountInfoSchema>(collectionName)
+
+        await collectionToBeDropped.drop()
+
+    }
+
+    public async initialize() {
+
+        await MongoService.client.connect(this.mongoDBConnectionURL)
 
         MongoService.db = MongoService.client.database("openforce")
 
@@ -22,25 +34,13 @@ export class MongoService {
 
         console.log(MongoService.db)
 
-        MongoService.initialized = true
+        this.initialized = true
 
     }
 
+    public async saveDeal(deal: DealSchema): Promise<any> {
 
-    public async dropCollection(collectionName: string, connectionURL: string = "mongodb://localhost:27017"): Promise<any> {
-
-        if (!MongoService.initialized) await MongoService.initialize(connectionURL)
-
-        const collectionToBeDropped = MongoService.db.collection<AccountInfoSchema>(collectionName)
-
-        await collectionToBeDropped.drop()
-
-    }
-
-
-    public async saveDeal(deal: DealSchema, connectionURL: string = "mongodb://localhost:27017"): Promise<any> {
-
-        if (!MongoService.initialized) await MongoService.initialize(connectionURL)
+        if (!this.initialized) await this.initialize()
 
 
         const insertId = await MongoService.dealCollection.insertOne({
@@ -58,22 +58,18 @@ export class MongoService {
     }
 
 
-    public async readDeal(apiKey?: string, connectionURL: string = "mongodb://localhost:27017"): Promise<any | any[]> {
+    public async readDeals(apiKey: string): Promise<any[]> {
 
-        if (!MongoService.initialized) await MongoService.initialize(connectionURL)
+        if (!this.initialized) await this.initialize()
 
-        if (apiKey === undefined) {
-            return MongoService.dealCollection.find({}).toArray()
-        }
-
-        return MongoService.dealCollection.findOne({ apiKey: "123" })
+        return MongoService.dealCollection.findMany({ apiKey })
 
     }
 
 
-    public async saveAccountInfo(accountInfo: AccountInfoSchema, connectionURL: string = "mongodb://localhost:27017"): Promise<any> {
+    public async saveAccountInfo(accountInfo: AccountInfoSchema): Promise<any> {
 
-        if (!MongoService.initialized) await MongoService.initialize(connectionURL)
+        if (!this.initialized) await this.initialize()
 
         const insertId = await MongoService.accountInfosCollection.insertOne({
             apiKey: accountInfo.apiKey,
@@ -93,9 +89,9 @@ export class MongoService {
     }
 
 
-    public async readAccountInfo(apiKey?: string, connectionURL: string = "mongodb://localhost:27017"): Promise<any | any[]> {
+    public async readAccountInfo(apiKey?: string): Promise<any | any[]> {
 
-        if (!MongoService.initialized) await MongoService.initialize(connectionURL)
+        if (!this.initialized) await this.initialize()
 
         if (apiKey === undefined) {
             return MongoService.accountInfosCollection.find({}).toArray()

@@ -2,6 +2,7 @@
 <!-- http://localhost:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV -->
 <script>
 import Deals from "@/components/Deals.svelte";
+export let apiKey
 export let accountInfo
 
   // import InputField from './InputField.svelte';
@@ -34,7 +35,7 @@ export let accountInfo
 <p><br></p>
 
 {#if accountInfo !== undefined}
-<Deals bind:accountInfo/>
+<Deals bind:apiKey/>
 {/if}
   
 

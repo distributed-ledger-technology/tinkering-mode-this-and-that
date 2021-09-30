@@ -73,7 +73,7 @@ LrOBK76cwtcaetdcxo
       <br>
       <Game bind:apiKey/> 
       <br>
-      <AccountInfo bind:accountInfo/>
+      <AccountInfo bind:accountInfo bind:apiKey/>
   {:else}
       <Party/>
   {/if}

@@ -11,9 +11,10 @@ const pathToFile = `${Deno.cwd()}/client/dist`
 app.use(serveStatic(pathToFile))
 app.use(json());
 
-const statisticsService = new Service()
+let statisticsService: any
 
 let pathToStats = ''
+let mongodbConnectionString = ''
 
 if (Deno.args[0] === '3001') {
     pathToStats = `${Deno.cwd()}/stats/`
@@ -39,6 +40,36 @@ app.get("/getAccountInfo/apiKey/:apiKey", opineCors(), async function (req, res)
     }
 })
 
+// http://localhost:3001/getDeals/apiKey/GCNuPXHiTsX5FTEDhV
+app.get("/getDeals/apiKey/:apiKey", opineCors(), async function (req, res) {
+    console.log(`reading account info for ${req.params.apiKey}`)
+    try {
+        res.send(await statisticsService.getAccountInfo(req.params.apiKey, pathToStats));
+    } catch (error) {
+        res.send("Bitte füge Deinen API Key am Ende der URL ein, um Deine Daten abzurufen.")
+    }
+})
+
+// http://localhost:3001/getAssetsUnderManagement
+app.get("/getAssetsUnderManagement", opineCors(), async function (req, res) {
+    console.log(`reading account info for ${req.params.apiKey}`)
+    try {
+        const assetsUnderManagement = await statisticsService.getAssetsUnderManagement(req.params.apiKey, pathToStats)
+        let equitySum = 0
+        let longPosSum = 0
+        let shortPosSum = 0
+        for (const asset of assetsUnderManagement) {
+            equitySum = equitySum + asset.equity
+            longPosSum = longPosSum + asset.longPositionSize
+            shortPosSum = shortPosSum + asset.shortPositionSize
+
+        }
+        res.send({ equitySum, longPosSum, shortPosSum, aum: assetsUnderManagement });
+    } catch (error) {
+        res.send("Shit Happened :)")
+    }
+})
+
 app.post("/addToPosition", opineCors(), async function (req, res) {
 
     const reason = `manually triggered deal via ${req.protocol + '://' + req.get('host') + req.originalUrl}`
@@ -47,6 +78,12 @@ app.post("/addToPosition", opineCors(), async function (req, res) {
 
 })
 
+const mongoUser = Deno.args[1]
+const mongoPW = Deno.args[2]
+
+if (mongoUser === undefined || mongoPW === undefined) {
+    throw new Error("Are you kidding me?")
+}
 
 if (Deno.args[0] === '443') {
 
@@ -61,12 +98,16 @@ if (Deno.args[0] === '443') {
         keyFile: "/etc/letsencrypt/live/openforce.de/privkey.pem"
     }
 
+
+    mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
+    statisticsService = new Service(mongodbConnectionString)
     app.listen(options, () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
 
 } else {
-
+    mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@65.21.110.40:27017`
+    // mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
+    statisticsService = new Service(mongodbConnectionString)
     app.listen(Number(Deno.args[0]), () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
-
 }
 
 

@@ -9,13 +9,29 @@ export class Service {
     private mongoService: MongoService
     private exchangeConnector: any
 
-    public constructor() {
-        this.mongoService = new MongoService()
+    public constructor(mongoDBConnectionString: string) {
+        this.mongoService = new MongoService(mongoDBConnectionString)
     }
 
-    public async getAccountInfo(apiKey: string, pathToStats: string): Promise<any> {
+    public async getAccountInfo(apiKey: string): Promise<any> {
 
         const accountInfoFromDB = await this.mongoService.readAccountInfo(apiKey)
+
+        return accountInfoFromDB
+
+    }
+
+    public async getDeals(apiKey: string): Promise<any[]> {
+
+        const accountInfoFromDB = await this.mongoService.readDeals(apiKey)
+
+        return accountInfoFromDB
+
+    }
+
+    public async getAssetsUnderManagement(): Promise<any> {
+
+        const accountInfoFromDB = await this.mongoService.readAccountInfo()
 
         return accountInfoFromDB
 

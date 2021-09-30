@@ -31,3 +31,5 @@ sudo docker run hello-world
 
 # to test mongodb via docker check:
 docker run --name testmongo -d -p 27017:27017 -d mongo
+
+docker run --name testmongo -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=super -e MONGO_INITDB_ROOT_PASSWORD=password -d mongo
