@@ -5,6 +5,8 @@
 
   export let apiKey = ""
   export let deals = []
+  export let all = false
+  export let displayedDeals = []
   
   function getDataSourceURL() {
 
@@ -18,10 +20,19 @@
     
   }
 
+  async function allDeals() {
+    all = true
+    displayedDeals = deals
+  }
+  
   async function getDeals() {
-  try {
-    const url = getDataSourceURL()
-    deals = await(await fetch(url)).json()
+    try {
+      const url = getDataSourceURL()
+      deals = await(await fetch(url)).json()
+
+      displayedDeals = [...deals]
+      if (all === false) displayedDeals.splice(0, deals.length -100)
+
   }catch(error) {
     console.log(error.message)
     alert(`I could not get any data for api key ${apiKey}`)
@@ -29,6 +40,7 @@
 }
 
 onMount(async () => {
+  await getDeals()
   setInterval(async()=> {
     if (apiKey !== '') {
       await getDeals()
@@ -41,7 +53,13 @@ onMount(async () => {
 
 {#if deals.length > 0}
   
-<h2>Last 100 Deals</h2>
+<h2>Last {displayedDeals.length} Deals</h2> 
+
+{#if !all}
+<button on:click={allDeals}>
+  Show me All Deals
+</button>
+{/if}
 
 <table>
   <tr>
@@ -54,7 +72,7 @@ onMount(async () => {
   </tr>
   
   
-    {#each deals as deal}
+    {#each displayedDeals as deal}
       <tr>
         <td>{deal.utcTime.split('.')[0].replace('T',' ')}</td>
         <td>{deal.side}</td>
