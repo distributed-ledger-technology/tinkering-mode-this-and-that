@@ -46,7 +46,8 @@
 
 </script>
 
-<h1>For Friends Only</h1> 
+<h1>Volatility Farming</h1> 
+<h3>For Friends Only</h3> 
   
 Enter Your API Key 
 
@@ -55,7 +56,7 @@ Enter Your API Key
 Example Key (Demo Account): 
 <br><br> 
 
-LrOBK76cwtcaetdcxo 
+iJB56E5EhqlgZ8C9Go 
 
 <p><br></p>
 

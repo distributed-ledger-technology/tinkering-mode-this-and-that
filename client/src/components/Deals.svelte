@@ -60,7 +60,7 @@ onMount(async () => {
   Show me All Deals
 </button>
 {/if}
-
+<p><br></p>
 <table>
   <tr>
     <th>UTC Time</th>
