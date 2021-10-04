@@ -65,7 +65,11 @@
 
     {#each displayedDeals as deal}
       <tr>
-        <td>{deal.utcTime.split(".")[0].replace("T", " ")}</td>
+        <td
+          ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT"
+            >{deal.utcTime.split(".")[0].replace("T", " ")}</a
+          ></td
+        >
         <td>{deal.action}</td>
         <td>{deal.reduceOnly}</td>
         <td>{deal.reason}</td>
