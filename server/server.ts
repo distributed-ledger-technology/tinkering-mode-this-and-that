@@ -106,8 +106,8 @@ if (Deno.args[0] === '443') {
     app.listen(options, () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
 
 } else {
-    // mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
-    mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@65.21.110.40:27017`
+    mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
+    // mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@65.21.110.40:27017`
     console.log(mongodbConnectionString)
     statisticsService = new Service(mongodbConnectionString)
     app.listen(Number(Deno.args[0]), () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))

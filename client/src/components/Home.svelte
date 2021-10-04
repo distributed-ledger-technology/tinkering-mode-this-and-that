@@ -56,7 +56,7 @@ Enter Your API Key
 Example Key (Demo Account): 
 <br><br> 
 
-iJB56E5EhqlgZ8C9Go 
+GCNuPXHiTsX5FTEDhV 
 
 <p><br></p>
 
