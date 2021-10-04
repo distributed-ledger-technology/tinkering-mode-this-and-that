@@ -46,7 +46,7 @@ export class MongoService {
         const insertId = await MongoService.dealCollection.insertOne({
             apiKey: deal.apiKey,
             utcTime: deal.utcTime,
-            side: deal.side,
+            side: deal.action,
             asset: deal.asset,
             reason: deal.reason,
             reduceOnly: deal.reduceOnly,

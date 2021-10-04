@@ -38,24 +38,16 @@ export class Service {
     }
 
 
-    public async addToPosition(apiKey: string, apiSecret: string, side: string, amount: number, reason: string) {
+    public async addToPosition(apiKey: string, apiSecret: string, action: string, amount: number, reason: string) {
 
-        // const pathToDataFile = `${`${Deno.cwd()}/../deno-cash/cash/stats`}/${apiKey}.json`
-
-        // const accountInfoCash = JSON.parse(await Persistence.readFromLocalFile(pathToDataFile))
-
-        // if (accountInfoCash === undefined || accountInfoCash.dealHistory === undefined) {
-        //     throw new Error(`I do not know you.`)
-        // }
-
-        console.log(`adding ${amount} to BTC ${side} for ${apiKey} ${apiSecret}`)
+        console.log(`${action} for BTC for ${apiKey} ${apiSecret}`)
 
         const bybitConnector = new BybitConnector(apiKey, apiSecret)
 
         let result
-        if (side === 'long') {
+        if (action === 'long') {
             result = await bybitConnector.buyFuture(`BTCUSDT`, amount, false)
-        } else if (side === 'short') {
+        } else if (action === 'short') {
             result = await bybitConnector.sellFuture(`BTCUSDT`, amount, false)
         }
 
@@ -71,7 +63,7 @@ export class Service {
                 _id: { $oid: "" },
                 apiKey,
                 utcTime: new Date().toISOString(),
-                side,
+                action,
                 reduceOnly: false,
                 reason,
                 asset: 'BTCUSDT',
@@ -81,12 +73,43 @@ export class Service {
 
             await this.mongoService.saveDeal(deal)
 
-            // accountInfoCash.dealHistory.splice(0, accountInfoCash.dealHistory.length - 100)
+        }
+    }
+    public async reducePosition(apiKey: string, apiSecret: string, action: string, amount: number, reason: string) {
 
+        console.log(`${action} from BTC for ${apiKey} ${apiSecret}`)
 
-            // accountInfoCash.dealHistory.push(deal)
+        const bybitConnector = new BybitConnector(apiKey, apiSecret)
 
-            // void Persistence.saveToLocalFile(pathToDataFile, JSON.stringify(accountInfoCash))
+        let result
+
+        if (action === 'reducelong') {
+            result = await bybitConnector.sellFuture(`BTCUSDT`, amount, true)
+        } else if (action === 'reduceshort') {
+            result = await bybitConnector.buyFuture(`BTCUSDT`, amount, true)
+        }
+
+        console.log(`${action} - ${JSON.stringify(result)}`)
+
+        if (result.ret_code === 0) {
+
+            this.exchangeConnector = new BybitConnector(apiKey, apiSecret)
+
+            const accountInfo = await this.exchangeConnector.getFuturesAccountData()
+
+            const deal: DealSchema = {
+                _id: { $oid: "" },
+                apiKey,
+                utcTime: new Date().toISOString(),
+                action,
+                reduceOnly: false,
+                reason,
+                asset: 'BTCUSDT',
+                equityBeforeThisDeal: accountInfo.result.USDT.equity
+
+            }
+
+            await this.mongoService.saveDeal(deal)
 
         }
     }

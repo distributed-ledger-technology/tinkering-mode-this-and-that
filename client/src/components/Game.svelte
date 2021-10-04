@@ -1,96 +1,138 @@
-
 <!-- http://localhost:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV -->
 <script>
-  
-  export let apiKey
-  
-  let process = ''
-  let apiSecret = ''
-  let amount = 0.001
-  
-  async function addToLongPosition() { 
-    
-    process = 'long'  
-    
+  export let apiKey;
+
+  let process = "";
+  let apiSecret = "";
+  let amount = 0.001;
+
+  async function addToLongPosition() {
+    process = "long";
   }
-  
-  async function addToShortPosition() { 
-    
-    process = 'short'  
-    
+
+  async function addToShortPosition() {
+    process = "short";
   }
-  
-  async function deal() { 
-    
+
+  async function reduceLongPosition() {
+    process = "reducelong";
+  }
+
+  async function reduceShortPosition() {
+    process = "reduceshort";
+  }
+
+  function getOptions() {
     let body = {
       apiKey,
       apiSecret,
       amount,
-      side: process
-    }
+      action: process,
+    };
 
     const options = {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(body),
       headers: {
-          'Content-Type': 'application/json'
-      }
-    }
+        "Content-Type": "application/json",
+      },
+    };
 
-
-    const url = getGamingURL()
-    
-    console.log(`calling ${url}`)
-    
-    fetch(url, options)
-
-    alert(`deal triggered - shall be visible here in about 8 seconds`)
-
+    return options;
   }
 
-  function getGamingURL() {
+  async function add() {
+    const addurl =
+      window.location == "http://localhost:3027/"
+        ? `http://localhost:3001/addToPosition`
+        : `https://openforce.de/addToPosition`;
 
-    if (window.location == 'http://localhost:3027/') { // for maintenance 
+    console.log(`calling ${addurl}`);
 
-    return `http://localhost:3001/addToPosition`
+    fetch(addurl, getOptions());
 
-  } 
+    alert(
+      `add to position triggered - shall be visible here in about 8 seconds`
+    );
+  }
 
-  return `https://openforce.de/addToPosition`
+  async function reduce() {
+    const addurl =
+      window.location == "http://localhost:3027/"
+        ? `http://localhost:3001/reducePosition`
+        : `https://openforce.de/reducePosition`;
 
-}
+    console.log(`calling ${addurl}`);
 
+    fetch(addurl, getOptions());
+
+    alert(
+      `reduce position triggered - shall be visible here in about 8 seconds`
+    );
+  }
 </script>
 
-<h2>Gaming Options</h2>
+<h2>Manual Intervention Options</h2>
 
-<button on:click={addToLongPosition}>
-  Add To Long Position
-</button>
+<button on:click={addToLongPosition}> Add To Long Position </button>
 
-<button on:click={addToShortPosition}>
-  Add To Short Position
-</button>
+<button on:click={addToShortPosition}> Add To Short Position </button>
+<p />
+<button on:click={reduceLongPosition}> Reduce Long Position </button>
 
-<p><br></p>
+<button on:click={reduceShortPosition}> Reduce Short Position </button>
 
-{#if process !== ''}
+<p><br /></p>
 
-<input type="text" name="" id="apiSecret" bind:value={apiSecret} placeholder="Enter Your API Secret...">
-<br>
+{#if process === "long" || process === "short"}
+  <input
+    type="text"
+    name=""
+    id="apiSecret"
+    bind:value={apiSecret}
+    placeholder="Enter Your API Secret..."
+  />
+  <br />
 
-<input type="number" name="" id="amount" bind:value={amount} placeholder="Enter Your API Secret..." step="0.001">
-<br>
+  <input
+    type="number"
+    name=""
+    id="amount"
+    bind:value={amount}
+    placeholder="Enter Your API Secret..."
+    step="0.001"
+  />
+  <br />
 
-<button on:click={deal}>
-  Add {amount} to BTC {process} now
-</button>
-
+  <button on:click={add}>
+    Add {amount} to BTC {process} now
+  </button>
 {/if}
 
+{#if process === "reducelong" || process === "reduceshort"}
+  <input
+    type="text"
+    name=""
+    id="apiSecret"
+    bind:value={apiSecret}
+    placeholder="Enter Your API Secret..."
+  />
+  <br />
 
+  <input
+    type="number"
+    name=""
+    id="amount"
+    bind:value={amount}
+    placeholder="Enter Your API Secret..."
+    step="0.001"
+  />
+  <br />
+
+  <button on:click={reduce}>
+    {process} by {amount} now
+  </button>
+{/if}
 
 <style>
-
-
 </style>

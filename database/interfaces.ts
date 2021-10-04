@@ -18,7 +18,7 @@ export interface DealSchema {
     _id: { $oid: string }
     apiKey: any
     utcTime: string
-    side: string
+    action: string
     asset: string
     reason: string
     reduceOnly: boolean
