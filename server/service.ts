@@ -1,5 +1,5 @@
 import { Persistence } from "https://deno.land/x/persistence@1.1.0/persistence.ts"
-import { MongoService } from "../database/mongo-service.ts"
+import { MongoService } from "https://deno.land/x/exchange_connectors@v1.2.3/src/volatility-farming/volatility-farmer/persistency/mongo-service.ts"
 import { AccountInfoSchema, DealSchema } from "../database/interfaces.ts"
 import { IExchangeConnector, BybitConnector } from "https://deno.land/x/exchange_connectors@v0.2.0/mod-bybit.ts";
 
@@ -23,7 +23,16 @@ export class Service {
 
     public async getDeals(apiKey: string): Promise<any[]> {
 
+        console.log(apiKey)
         const accountInfoFromDB = await this.mongoService.readDeals(apiKey)
+
+        return accountInfoFromDB
+
+    }
+
+    public async getLogs(apiKey: string): Promise<any[]> {
+
+        const accountInfoFromDB = await this.mongoService.readLogs(apiKey)
 
         return accountInfoFromDB
 

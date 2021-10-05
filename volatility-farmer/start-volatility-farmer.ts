@@ -1,5 +1,5 @@
 
-import { VolatilityFarmer } from "https://deno.land/x/exchange_connectors@v1.2.0/src/volatility-farming/volatility-farmer/volatility-farmer.ts"
+import { VolatilityFarmer } from "https://deno.land/x/exchange_connectors@v1.2.3/src/volatility-farming/volatility-farmer/volatility-farmer.ts"
 
 const apiKey = Deno.args[0]
 const apiSecret = Deno.args[1]

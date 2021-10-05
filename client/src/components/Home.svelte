@@ -1,84 +1,72 @@
-
-
-
 <!-- http://localhost:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV -->
 <script>
   import AccountInfo from "@/components/AccountInfo.svelte";
   import Game from "@/components/Game.svelte";
   import Party from "@/components/Party.svelte";
 
-	import { onMount } from 'svelte';
+  import { onMount } from "svelte";
 
   // import InputField from './InputField.svelte';
 
-    let accountInfo
-    let apiKey = ""
-  
-    function getDataSourceURL() {
+  let accountInfo;
+  let apiKey = "";
 
-      if (window.location == 'http://localhost:3027/') { // for maintenance 
+  function getDataSourceURL() {
+    if (window.location == "http://localhost:3027/") {
+      // for maintenance
 
-        return `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`
-
-      } 
-
-      return `https://openforce.de/getAccountInfo/apiKey/${apiKey}`
-      
+      return `http://localhost:3001/getAccountInfo/apiKey/${apiKey}`;
     }
 
-    async function getAccountInfo() {
+    return `https://openforce.de/getAccountInfo/apiKey/${apiKey}`;
+  }
+
+  async function getAccountInfo() {
     try {
-      const url = getDataSourceURL()
-      accountInfo = await(await fetch(url)).json()
-    }catch(error) {
-      console.log(error.message)
-      alert(`I could not get any data for api key ${apiKey}`)
+      const url = getDataSourceURL();
+      accountInfo = await (await fetch(url)).json();
+    } catch (error) {
+      console.log(error.message);
+      alert(`I could not get any data for api key ${apiKey}`);
     }
-	}
+  }
 
   onMount(async () => {
-    setInterval(async()=> {
-      if (apiKey !== '') {
-        await getAccountInfo()
+    setInterval(async () => {
+      if (apiKey !== "") {
+        await getAccountInfo();
       }
-    }, 8 * 1000)
-	});
-
+    }, 8 * 1000);
+  });
 </script>
 
-<h1>Volatility Farming</h1> 
-<h3>For Friends Only</h3> 
-  
-Enter Your API Key 
+<h1>Volatility Farming</h1>
+<h3>For Friends Only</h3>
 
-<p></p>
+Enter Your API Key
 
-Example Key (Demo Account): 
-<br><br> 
+<p />
 
-GCNuPXHiTsX5FTEDhV 
+Example Key (Demo Account):
+<br /><br />
 
-<p><br></p>
+GCNuPXHiTsX5FTEDhV
 
-<input type="text" name="" id="" bind:value={apiKey}>
+<p><br /></p>
 
+<input type="text" name="" id="" bind:value={apiKey} />
 
-
-<button on:click={getAccountInfo}>
-  Los
-</button>
+<button on:click={getAccountInfo}> Los </button>
 
 <p>
-  
   {#if accountInfo !== undefined}
-      <br>
-      <Game bind:apiKey/> 
-      <br>
-      <AccountInfo bind:accountInfo bind:apiKey/>
+    <br />
+    <Game bind:apiKey />
+    <br />
+    <AccountInfo bind:accountInfo bind:apiKey />
   {:else}
-      <Party/>
+    <Party />
   {/if}
-    
 </p>
 
 <link

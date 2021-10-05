@@ -3,32 +3,30 @@
   import { onMount } from "svelte";
 
   export let apiKey = "";
-  export let deals = [];
-  export let all = false;
-  export let displayedDeals = [];
+  export let logs = [];
 
   function getDataSourceURL() {
     if (window.location == "http://localhost:3027/") {
       // for maintenance
 
-      return `http://localhost:3001/getDeals/apiKey/${apiKey}`;
+      return `http://localhost:3001/getLogs/apiKey/${apiKey}`;
     }
 
-    return `https://openforce.de/getDeals/apiKey/${apiKey}`;
+    return `https://openforce.de/getLogs/apiKey/${apiKey}`;
   }
 
-  async function allDeals() {
-    all = true;
-    displayedDeals = deals;
-  }
+  // async function allDeals() {
+  //   all = true;
+  //   displayedDeals = deals;
+  // }
 
-  async function getDeals() {
+  async function getLogs() {
     try {
       const url = getDataSourceURL();
-      deals = await (await fetch(url)).json();
+      logs = await (await fetch(url)).json();
 
-      displayedDeals = [...deals];
-      if (all === false) displayedDeals.splice(0, deals.length - 10);
+      // displayedDeals = [...deals];
+      // if (all === false) displayedDeals.splice(0, deals.length - 100);
     } catch (error) {
       console.log(error.message);
       alert(`I could not get any data for api key ${apiKey}`);
@@ -36,46 +34,39 @@
   }
 
   onMount(async () => {
-    await getDeals();
+    await getLogs();
     setInterval(async () => {
       if (apiKey !== "") {
-        await getDeals();
+        await getLogs();
       }
     }, 8 * 1000);
   });
   // import InputField from './InputField.svelte';
 </script>
 
-{#if deals.length > 0}
-  <h2>Last {displayedDeals.length} Deals</h2>
+{#if logs.length > 0}
+  <h2>Last {logs.length} Log Entries</h2>
 
-  {#if !all}
-    <button on:click={allDeals}> Show me All Deals </button>
-  {/if}
+  <!-- {#if !all}
+    <button on:click={allDeals}> Show me All Deals </button> -->
+  <!-- {/if} -->
   <p><br /></p>
   <table>
     <tr>
       <th>UTC Time</th>
-      <th>Side</th>
-      <th>Reduce Only</th>
-      <th>Reason</th>
-      <th>Asset</th>
-      <th>Equity Before This Deal</th>
+      <th>Message</th>
     </tr>
 
-    {#each displayedDeals as deal}
+    {#each logs as log}
       <tr>
         <td
           ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT"
-            >{deal.utcTime.split(".")[0].replace("T", " ")}</a
+            >{log.utcTime.split(".")[0].replace("T", " ")}</a
           ></td
         >
-        <td>{deal.action}</td>
-        <td>{deal.reduceOnly}</td>
-        <td>{deal.reason}</td>
-        <td>{deal.asset}</td>
-        <td>{deal.equityBeforeThisDeal.toFixed(2)}</td>
-      </tr><tr />{/each}
+        <td>{log.message}</td>
+      </tr><tr />
+    {/each}
   </table>
 {/if}
 

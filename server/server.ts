@@ -40,11 +40,21 @@ app.get("/getAccountInfo/apiKey/:apiKey", opineCors(), async function (req, res)
     }
 })
 
-// http://localhost:3001/getDeals/apiKey/LrOBK76cwtcaetdcxo
+// http://localhost:3001/getDeals/apiKey/GCNuPXHiTsX5FTEDhV
 app.get("/getDeals/apiKey/:apiKey", opineCors(), async function (req, res) {
-    console.log(`reading account info for ${req.params.apiKey}`)
+    console.log(`reading deals for ${req.params.apiKey}`)
     try {
         res.send(await statisticsService.getDeals(req.params.apiKey));
+    } catch (error) {
+        res.send(`wtf :) ${error.message}`)
+    }
+})
+
+// http://localhost:3001/getLogs/apiKey/LrOBK76cwtcaetdcxo
+app.get("/getLogs/apiKey/:apiKey", opineCors(), async function (req, res) {
+    console.log(`reading logs for ${req.params.apiKey}`)
+    try {
+        res.send(await statisticsService.getLogs(req.params.apiKey));
     } catch (error) {
         res.send(`wtf :) ${error.message}`)
     }
