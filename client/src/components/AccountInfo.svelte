@@ -33,8 +33,9 @@
 
 <p><br /></p>
 
-<br />
 <Logs bind:apiKey />
+
+<p><br /></p>
 
 {#if accountInfo !== undefined}
   <Deals bind:apiKey />

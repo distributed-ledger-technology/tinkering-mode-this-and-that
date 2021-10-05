@@ -1,5 +1,10 @@
 <!-- http://localhost:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV -->
 <script>
+  import {
+    SortService,
+    Direction,
+  } from "https://deno.land/x/sort@v1.1.1/mod.ts";
+
   import { onMount } from "svelte";
 
   export let apiKey = "";
@@ -28,7 +33,17 @@
       deals = await (await fetch(url)).json();
 
       displayedDeals = [...deals];
-      if (all === false) displayedDeals.splice(0, deals.length - 10);
+      if (all === false)
+        displayedDeals.splice(
+          displayedDeals.length - 990,
+          displayedDeals.length
+        );
+
+      const sortOptions = [
+        { fieldName: "utcTime", direction: Direction.DESCENDING },
+      ];
+
+      displayedDeals = SortService.sort(displayedDeals, sortOptions);
     } catch (error) {
       console.log(error.message);
       alert(`I could not get any data for api key ${apiKey}`);

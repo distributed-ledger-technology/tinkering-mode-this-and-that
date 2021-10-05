@@ -36,7 +36,6 @@
         { fieldName: "utcTime", direction: Direction.ASCENDING },
       ];
 
-      console.log(logs[0]);
       logs = SortService.sort(logs, sortOptions);
 
       // displayedDeals = [...deals];
