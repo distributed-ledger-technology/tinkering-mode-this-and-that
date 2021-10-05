@@ -1,5 +1,9 @@
 <!-- http://localhost:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV -->
 <script>
+  import {
+    SortService,
+    Direction,
+  } from "https://deno.land/x/sort@v1.1.1/mod.ts";
   import { onMount } from "svelte";
 
   export let apiKey = "";
@@ -25,8 +29,18 @@
       const url = getDataSourceURL();
       logs = await (await fetch(url)).json();
 
+      // alert(logs[0]);
+      console.log(logs[0]);
+
+      const sortOptions = [
+        { fieldName: "utcTime", direction: Direction.ASCENDING },
+      ];
+
+      console.log(logs[0]);
+      logs = SortService.sort(logs, sortOptions);
+
       // displayedDeals = [...deals];
-      // if (all === false) displayedDeals.splice(0, deals.length - 100);
+      // logs = logs.splice(0, logs.length - 4);
     } catch (error) {
       console.log(error.message);
       alert(`I could not get any data for api key ${apiKey}`);
@@ -39,7 +53,7 @@
       if (apiKey !== "") {
         await getLogs();
       }
-    }, 8 * 1000);
+    }, 4 * 1000);
   });
   // import InputField from './InputField.svelte';
 </script>
@@ -53,17 +67,16 @@
   <p><br /></p>
   <table>
     <tr>
-      <th>UTC Time</th>
       <th>Message</th>
     </tr>
 
     {#each logs as log}
       <tr>
-        <td
+        <!-- <td
           ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT"
             >{log.utcTime.split(".")[0].replace("T", " ")}</a
           ></td
-        >
+        > -->
         <td>{log.message}</td>
       </tr><tr />
     {/each}
@@ -80,7 +93,7 @@
   td,
   th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
   }
 
