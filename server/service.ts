@@ -1,7 +1,6 @@
-import { Persistence } from "https://deno.land/x/persistence@1.1.0/persistence.ts"
-import { MongoService } from "https://deno.land/x/exchange_connectors@v1.3.1/src/volatility-farming/volatility-farmer/persistency/mongo-service.ts"
-import { AccountInfoSchema, DealSchema } from "../database/interfaces.ts"
-import { IExchangeConnector, BybitConnector } from "https://deno.land/x/exchange_connectors@v0.2.0/mod-bybit.ts";
+import { MongoService } from "https://deno.land/x/exchange_connectors@v1.3.2/src/volatility-farming/volatility-farmer/persistency/mongo-service.ts"
+import { DealSchema } from "../database/interfaces.ts"
+import { BybitConnector } from "https://deno.land/x/exchange_connectors@v0.2.0/mod-bybit.ts";
 
 
 export class Service {
