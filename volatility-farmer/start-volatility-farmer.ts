@@ -1,11 +1,5 @@
-import { VolatilityFarmer } from "https://deno.land/x/exchange_connectors@v1.4.1/mod-volatility-farmer.ts"
 import { Registry } from "https://deno.land/x/injector@v1.1.0/mod.ts"
-import { InvestmentAdvisor } from "https://deno.land/x/exchange_connectors@v1.4.1/src/volatility-farming/investment-advisor/investment-advisor.ts"
-import { InvestmentAdvisorETHLong } from "https://deno.land/x/exchange_connectors@v1.4.0/src/volatility-farming/investment-advisor/alternative-investment-advisors/investment-advisor-eth-long.ts"
-import { BybitConnector } from "https://deno.land/x/exchange_connectors@v1.4.1/mod-bybit.ts";
-import { MongoService } from "https://deno.land/x/exchange_connectors@v1.4.1/src/volatility-farming/volatility-farmer/persistency/mongo-service.ts";
-import { IExchangeConnector } from "https://deno.land/x/exchange_connectors@v1.4.1/src/interfaces/exchange-connector-interface.ts";
-import { IPersistenceService } from "https://deno.land/x/exchange_connectors@v1.4.1/src/volatility-farming/volatility-farmer/persistency/interfaces.ts";
+import { InvestmentAdvisor, InvestmentAdvisorETHLong, BybitConnector, IPersistenceService, MongoService, IExchangeConnector, VolatilityFarmer } from "../deps.ts"
 
 
 // get parameters
@@ -16,6 +10,8 @@ const dbPW = Deno.args[3]
 const investmentAdvisorClassName = (Deno.args[4] === undefined) ? "InvestmentAdvisor" : Deno.args[4]
 const exchangeConnectorClassName = (Deno.args[5] === undefined) ? "BybitConnector" : Deno.args[5]
 const persistenceServiceClassName = (Deno.args[6] === undefined) ? "MongoService" : Deno.args[6]
+const persistenceHost = (Deno.args[7] === undefined) ? '65.21.110.40' : Deno.args[7]
+const persistencePort = (Deno.args[8] === undefined) ? '27017' : Deno.args[8]
 
 
 // Dependent On Components Handling
@@ -29,8 +25,7 @@ registryExchangeConnectors.register(BybitConnector)
 registryPersistenceServices.register(MongoService)
 
 const exchangeConnector: IExchangeConnector = new (registryExchangeConnectors.get(exchangeConnectorClassName))(apiKey, apiSecret)
-const dbConnectionURL = (dbUser.substr(0, 1) === "f") ? `mongodb://${dbUser}:${dbPW}@65.21.110.40:27017` : `mongodb://${dbUser}:${dbPW}@localhost:27017` // temporary :) 
-const persistenceService: IPersistenceService = new (registryPersistenceServices.get(persistenceServiceClassName))(dbConnectionURL)
+const persistenceService: IPersistenceService = new (registryPersistenceServices.get(persistenceServiceClassName))(`mongodb://${dbUser}:${dbPW}@${persistenceHost}:${persistencePort}`)
 const investmentAdvisor: InvestmentAdvisor = new (registryInvestmentAdvisors.get(investmentAdvisorClassName))(apiKey, persistenceService)
 
 
