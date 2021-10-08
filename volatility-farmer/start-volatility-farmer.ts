@@ -1,5 +1,5 @@
 import { Registry } from "https://deno.land/x/injector@v1.1.0/mod.ts"
-import { InvestmentAdvisor, InvestmentAdvisorETHLong, BybitConnector, IPersistenceService, MongoService, IExchangeConnector, VolatilityFarmer } from "../deps.ts"
+import { InvestmentAdvisor, InvestmentAdvisorETHLong, BybitConnector, IPersistenceService, MongoService, IExchangeConnector, VolatilityFarmer, InvestmentAdvisorBTCLongShortExtreme } from "../deps.ts"
 
 
 // get parameters
@@ -21,6 +21,7 @@ const registryPersistenceServices = new Registry()
 
 registryInvestmentAdvisors.register(InvestmentAdvisorETHLong)
 registryInvestmentAdvisors.register(InvestmentAdvisor)
+registryInvestmentAdvisors.register(InvestmentAdvisorBTCLongShortExtreme)
 registryExchangeConnectors.register(BybitConnector)
 registryPersistenceServices.register(MongoService)
 
