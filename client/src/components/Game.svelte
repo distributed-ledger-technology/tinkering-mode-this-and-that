@@ -72,14 +72,6 @@
   }
 </script>
 
-<a
-  target="_blank"
-  href="https://deno.land/x/exchange_connectors/src/volatility-farming/investment-advisor/investment-advisor.ts"
-  >Investment Advisor Implementation
-</a>
-<p />
-feel free to add your own Investment Advisor
-
 <p><br /></p>
 <h2>Manual Intervention Options</h2>
 

@@ -1,5 +1,4 @@
-import { Registry } from "../deps.ts"
-import { InvestmentAdvisor, InvestmentAdvisorETHLong, BybitConnector, IPersistenceService, MongoService, IExchangeConnector, VolatilityFarmer, InvestmentAdvisorBTCLongShortExtreme } from "../deps.ts"
+import { Registry, InvestmentAdvisor, InvestmentAdvisorETHLong, BybitConnector, IPersistenceService, MongoService, IExchangeConnector, VolatilityFarmer, InvestmentAdvisorBTCLongShortExtreme } from "../deps.ts"
 
 
 // get parameters

@@ -63,6 +63,17 @@ GCNuPXHiTsX5FTEDhV
     <br />
     <Game bind:apiKey />
     <br />
+
+    <!-- This account uses the following strategy {accountInfo.} - for details explore -->
+    This account uses the following strategy: tbd - for details explore
+    <a
+      target="_blank"
+      href="https://deno.land/x/exchange_connectors/src/volatility-farming/investment-advisor"
+      >Investment Advisor Implementation
+    </a>
+    <p />
+
+    <br />
     <AccountInfo bind:accountInfo bind:apiKey />
   {:else}
     <Party />
