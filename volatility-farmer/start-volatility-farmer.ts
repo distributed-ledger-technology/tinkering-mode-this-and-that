@@ -1,11 +1,11 @@
-import { VolatilityFarmer } from "https://deno.land/x/exchange_connectors@v1.4.0/mod-volatility-farmer.ts"
+import { VolatilityFarmer } from "https://deno.land/x/exchange_connectors@v1.4.1/mod-volatility-farmer.ts"
 import { Registry } from "https://deno.land/x/injector@v1.1.0/mod.ts"
-import { InvestmentAdvisor } from "https://deno.land/x/exchange_connectors@v1.4.0/src/volatility-farming/investment-advisor/investment-advisor.ts"
+import { InvestmentAdvisor } from "https://deno.land/x/exchange_connectors@v1.4.1/src/volatility-farming/investment-advisor/investment-advisor.ts"
 import { InvestmentAdvisorETHLong } from "https://deno.land/x/exchange_connectors@v1.4.0/src/volatility-farming/investment-advisor/alternative-investment-advisors/investment-advisor-eth-long.ts"
-import { BybitConnector } from "https://deno.land/x/exchange_connectors@v1.4.0/mod-bybit.ts";
-import { MongoService } from "https://deno.land/x/exchange_connectors@v1.4.0/src/volatility-farming/volatility-farmer/persistency/mongo-service.ts";
-import { IExchangeConnector } from "https://deno.land/x/exchange_connectors@v1.4.0/src/interfaces/exchange-connector-interface.ts";
-import { IPersistenceService } from "https://deno.land/x/exchange_connectors@v1.4.0/src/volatility-farming/volatility-farmer/persistency/interfaces.ts";
+import { BybitConnector } from "https://deno.land/x/exchange_connectors@v1.4.1/mod-bybit.ts";
+import { MongoService } from "https://deno.land/x/exchange_connectors@v1.4.1/src/volatility-farming/volatility-farmer/persistency/mongo-service.ts";
+import { IExchangeConnector } from "https://deno.land/x/exchange_connectors@v1.4.1/src/interfaces/exchange-connector-interface.ts";
+import { IPersistenceService } from "https://deno.land/x/exchange_connectors@v1.4.1/src/volatility-farming/volatility-farmer/persistency/interfaces.ts";
 
 
 // get parameters
