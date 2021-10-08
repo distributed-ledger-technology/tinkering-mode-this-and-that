@@ -1,4 +1,4 @@
-import { MongoService } from "https://deno.land/x/exchange_connectors@v1.3.3/src/volatility-farming/volatility-farmer/persistency/mongo-service.ts"
+import { MongoService } from "https://deno.land/x/exchange_connectors@v1.4.0/src/volatility-farming/volatility-farmer/persistency/mongo-service.ts"
 import { DealSchema } from "../database/interfaces.ts"
 import { BybitConnector } from "https://deno.land/x/exchange_connectors@v0.2.0/mod-bybit.ts";
 
