@@ -29,7 +29,8 @@ registryExchangeConnectors.register(BybitConnector)
 registryPersistenceServices.register(MongoService)
 
 const exchangeConnector: IExchangeConnector = new (registryExchangeConnectors.get(exchangeConnectorClassName))(apiKey, apiSecret)
-const persistenceService: IPersistenceService = new (registryPersistenceServices.get(persistenceServiceClassName))(`mongodb://${dbUser}:${dbPW}@65.21.110.40:27017`)
+const dbConnectionURL = (dbUser.substr(0, 1) === "f") ? `mongodb://${dbUser}:${dbPW}@65.21.110.40:27017` : `mongodb://${dbUser}:${dbPW}@localhost:27017` // temporary :) 
+const persistenceService: IPersistenceService = new (registryPersistenceServices.get(persistenceServiceClassName))(dbConnectionURL)
 const investmentAdvisor: InvestmentAdvisor = new (registryInvestmentAdvisors.get(investmentAdvisorClassName))(apiKey, persistenceService)
 
 
