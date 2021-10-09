@@ -134,7 +134,11 @@ if (Deno.args[0] === '443') {
 }
 
 
-const houseKeeper = new HouseKeeper(mongodbConnectionString)
-houseKeeper.keepHouse()
+try {
+    const houseKeeper = new HouseKeeper(mongodbConnectionString)
+    houseKeeper.keepHouse()
+} catch (error) {
+    console.log(`the housekeeper detected the error: "${error.message}"`)
+}
 
 

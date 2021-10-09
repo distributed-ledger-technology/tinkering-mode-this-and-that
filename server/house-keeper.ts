@@ -17,6 +17,7 @@ export class HouseKeeper {
             for (const account of accounts) {
                 console.log(account.apiKey)
                 await MongoService.deleteOldLogEntries(this.mongoService, account.apiKey)
+                await MongoService.deleteOldDealEntries(this.mongoService, account.apiKey)
             }
 
         }, 2 * 60 * 60 * 1000);
