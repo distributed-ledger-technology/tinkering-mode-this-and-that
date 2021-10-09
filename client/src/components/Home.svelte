@@ -82,6 +82,14 @@ GCNuPXHiTsX5FTEDhV
 
     <br />
     <AccountInfo bind:accountInfo bind:apiKey />
+
+    <p><br /></p>
+
+    <a
+      target="_blank"
+      href="http://localhost:3001/getAssetsUnderManagementDemoAccounts"
+      >Assets Under Management - Demo Accounts</a
+    >
   {:else}
     <Party />
   {/if}

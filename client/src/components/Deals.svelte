@@ -35,7 +35,8 @@
       displayedDeals = [...deals];
       if (all === false)
         displayedDeals.splice(
-          displayedDeals.length - 990,
+          displayedDeals.length -
+            (deals.length > 990 ? 990 : deals.length - 10),
           displayedDeals.length
         );
 
@@ -65,7 +66,7 @@
   <h2>Last {displayedDeals.length} Deals</h2>
 
   {#if !all}
-    <button on:click={allDeals}> Show me All Deals </button>
+    <button on:click={allDeals}> Show me All Deals (48 hours) </button>
   {/if}
   <p><br /></p>
   <table>

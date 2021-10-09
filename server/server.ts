@@ -60,8 +60,8 @@ app.get("/getLogs/apiKey/:apiKey", opineCors(), async function (req, res) {
     }
 })
 
-// http://localhost:3001/getAssetsUnderManagement
-app.get("/getAssetsUnderManagement", opineCors(), async function (req, res) {
+// http://localhost:3001/getAssetsUnderManagementDemoAccounts
+app.get("/getAssetsUnderManagementDemoAccounts", opineCors(), async function (req, res) {
 
     try {
         const assetsUnderManagement = await statisticsService.getAssetsUnderManagement(req.params.apiKey, pathToStats)
