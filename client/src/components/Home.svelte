@@ -41,7 +41,12 @@
 </script>
 
 <h1>Volatility Farming</h1>
-<h3>For Friends Only</h3>
+<a
+  target="_blank"
+  href="https://github.com/distributed-ledger-technology/cash-services"
+>
+  <h3>For Friends Only</h3>
+</a>
 
 Enter Your API Key
 

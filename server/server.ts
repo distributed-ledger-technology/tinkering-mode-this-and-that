@@ -1,7 +1,7 @@
 import { json, opine, serveStatic } from "https://deno.land/x/opine@1.7.0/mod.ts"
 import { opineCors } from "https://deno.land/x/cors@v1.2.1/mod.ts";
 import { Service } from "./service.ts"
-import { BybitConnector } from "../utilities/exchange-connectors/bybit-connector.ts";
+import { HouseKeeper } from "./house-keeper.ts";
 
 const app = opine()
 
@@ -124,12 +124,17 @@ if (Deno.args[0] === '443') {
     app.listen(options, () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
 
 } else {
+
     // mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
     mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@65.21.110.40:27017`
     console.log(mongodbConnectionString)
     statisticsService = new Service(mongodbConnectionString)
     app.listen(Number(Deno.args[0]), () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
+
 }
 
+
+const houseKeeper = new HouseKeeper(mongodbConnectionString)
+houseKeeper.keepHouse()
 
 
