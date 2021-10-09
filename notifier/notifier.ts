@@ -19,8 +19,8 @@ export class CashNotifier {
 
         setInterval(async () => {
 
-            // const urlToGetData = `http://localhost:3001/getAssetsUnderManagement`
-            const urlToGetData = `https://openforce.de/getAssetsUnderManagement`
+            // const urlToGetData = `http://localhost:3001/getAssetsUnderManagementDemoAccounts`
+            const urlToGetData = `https://openforce.de/getAssetsUnderManagementDemoAccounts`
 
             const response = await Request.get(urlToGetData)
 
@@ -34,7 +34,7 @@ export class CashNotifier {
                 sum = sum + Number(asset.equity.toFixed(2))
             }
 
-            message = `${message} \n sum: ${sum}`
+            message = `${message} \n sum: ${sum.toFixed(2)}`
 
 
             const urlToSendMessage = `${this.baseURL}bot${this.botToken}${EEndpoints[2]}?chat_id=${this.targetChatId}&text=${message}`

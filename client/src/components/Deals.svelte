@@ -66,7 +66,7 @@
   <h2>Last {displayedDeals.length} Deals</h2>
 
   {#if !all}
-    <button on:click={allDeals}> Show me All Deals (48 hours) </button>
+    <button on:click={allDeals}> Show me All Recent Deals</button>
   {/if}
   <p><br /></p>
   <table>

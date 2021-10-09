@@ -64,26 +64,27 @@
     <button on:click={allDeals}> Show me All Deals </button> -->
   <!-- {/if} -->
   <p><br /></p>
-  <table>
-    <tr>
+  <table id="terminalStyle">
+    <!-- <tr>
       <th>Message</th>
-    </tr>
+    </tr> -->
 
     {#each logs as log}
       <tr>
         <!-- <td
           ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT"
-            >{log.utcTime.split(".")[0].replace("T", " ")}</a
+          >{log.utcTime.split(".")[0].replace("T", " ")}</a
           ></td
-        > -->
+          > -->
         <td>{log.message}</td>
-      </tr><tr />
+      </tr>
     {/each}
   </table>
 {/if}
 
 <style>
   table {
+    background-color: black;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -91,12 +92,18 @@
 
   td,
   th {
-    border: 1px solid #dddddd;
+    /* border: 1px solid #dddddd; */
     text-align: center;
     padding: 8px;
   }
 
-  tr:nth-child(even) {
+  /* tr:nth-child(even) {
+    background-color: black;
     background-color: #dddddd;
+  } */
+
+  #terminalStyle {
+    background-color: black;
+    color: white;
   }
 </style>
