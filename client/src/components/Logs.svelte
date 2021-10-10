@@ -5,6 +5,7 @@
     Direction,
   } from "https://deno.land/x/sort@v1.1.1/mod.ts";
   import { onMount } from "svelte";
+  import Chart from "./Chart.svelte";
 
   export let apiKey = "";
   export let logs = [];
@@ -57,28 +58,7 @@
   // import InputField from './InputField.svelte';
 </script>
 
-<!-- <svelte:head>
-  <script
-    type="text/javascript"
-    src="https://s3.tradingview.com/tv.js"></script>
-
-  <script type="text/javascript">
-    new TradingView.widget({
-      width: 980,
-      height: 610,
-      symbol: "BITSTAMP:BTCUSD",
-      interval: "D",
-      timezone: "Etc/UTC",
-      theme: "light",
-      style: "1",
-      locale: "en",
-      toolbar_bg: "#f1f3f6",
-      enable_publishing: false,
-      allow_symbol_change: true,
-      container_id: "tradingview_785e5",
-    });
-  </script>
-</svelte:head> -->
+<Chart />
 
 {#if logs.length > 0}
   <div id="logList">
@@ -92,28 +72,6 @@
         </tr>
       {/each}
     </table>
-  </div>
-
-  <div id="priceChart">
-    <!-- TradingView Widget BEGIN -->
-    <div class="tradingview-widget-container">
-      <div id="tradingview_785e5" />
-      <div class="tradingview-widget-copyright">
-        <a
-          href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP"
-          rel="noopener"
-          target="_blank"><span class="blue-text">BTCUSD Chart</span></a
-        > by TradingView
-      </div>
-    </div>
-    <!-- TradingView Widget END -->
-
-    <!-- <embed
-      src="https://www.bybit.com/trade/usdt/BTCUSDT"
-      type="text/html"
-      width="500"
-      height="200"
-    /> -->
   </div>
 {/if}
 
