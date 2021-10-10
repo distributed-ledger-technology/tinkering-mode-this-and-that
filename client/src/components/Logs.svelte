@@ -5,6 +5,7 @@
     Direction,
   } from "https://deno.land/x/sort@v1.1.1/mod.ts";
   import { onMount } from "svelte";
+  import Chart from "./Chart.svelte";
 
   export let apiKey = "";
   export let logs = [];
@@ -57,29 +58,21 @@
   // import InputField from './InputField.svelte';
 </script>
 
+<Chart />
+
 {#if logs.length > 0}
-  <h2>Last {logs.length} Log Entries</h2>
+  <div id="logList">
+    <h2>Last {logs.length} Log Entries</h2>
 
-  <!-- {#if !all}
-    <button on:click={allDeals}> Show me All Deals </button> -->
-  <!-- {/if} -->
-  <p><br /></p>
-  <table id="terminalStyle">
-    <!-- <tr>
-      <th>Message</th>
-    </tr> -->
-
-    {#each logs as log}
-      <tr>
-        <!-- <td
-          ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT"
-          >{log.utcTime.split(".")[0].replace("T", " ")}</a
-          ></td
-          > -->
-        <td>{log.message}</td>
-      </tr>
-    {/each}
-  </table>
+    <p><br /></p>
+    <table id="terminalStyle">
+      {#each logs as log}
+        <tr>
+          <td>{log.message}</td>
+        </tr>
+      {/each}
+    </table>
+  </div>
 {/if}
 
 <style>
