@@ -33,7 +33,7 @@
 
 <p><br /></p>
 
-<Logs bind:apiKey />
+<Logs bind:accountInfo />
 
 <p><br /></p>
 

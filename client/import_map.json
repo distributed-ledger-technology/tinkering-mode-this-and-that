@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "svelte-frappe-charts": "https://cdn.skypack.dev/svelte-frappe-charts"
-  }
-}

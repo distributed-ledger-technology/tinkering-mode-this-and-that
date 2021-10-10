@@ -66,22 +66,23 @@ GCNuPXHiTsX5FTEDhV
 <p>
   {#if accountInfo !== undefined}
     <br />
-    <Game bind:apiKey />
-    <br />
 
     <!-- This account uses the following strategy {accountInfo.} - for details explore -->
     This account uses the following strategy: <b>"{accountInfo.strategy}"</b>
     <br />
-    for details explore
+    Please add your own strategy
     <a
       target="_blank"
       href="https://deno.land/x/exchange_connectors/src/volatility-farming/investment-advisor"
-      >Investment Advisor Implementation
+      >here
     </a>
     <p />
 
     <br />
     <AccountInfo bind:accountInfo bind:apiKey />
+
+    <br />
+    <Game bind:apiKey />
 
     <p><br /></p>
 
