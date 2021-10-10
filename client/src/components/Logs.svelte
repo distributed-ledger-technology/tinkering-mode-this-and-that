@@ -57,29 +57,64 @@
   // import InputField from './InputField.svelte';
 </script>
 
+<!-- <svelte:head>
+  <script
+    type="text/javascript"
+    src="https://s3.tradingview.com/tv.js"></script>
+
+  <script type="text/javascript">
+    new TradingView.widget({
+      width: 980,
+      height: 610,
+      symbol: "BITSTAMP:BTCUSD",
+      interval: "D",
+      timezone: "Etc/UTC",
+      theme: "light",
+      style: "1",
+      locale: "en",
+      toolbar_bg: "#f1f3f6",
+      enable_publishing: false,
+      allow_symbol_change: true,
+      container_id: "tradingview_785e5",
+    });
+  </script>
+</svelte:head> -->
+
 {#if logs.length > 0}
-  <h2>Last {logs.length} Log Entries</h2>
+  <div id="logList">
+    <h2>Last {logs.length} Log Entries</h2>
 
-  <!-- {#if !all}
-    <button on:click={allDeals}> Show me All Deals </button> -->
-  <!-- {/if} -->
-  <p><br /></p>
-  <table id="terminalStyle">
-    <!-- <tr>
-      <th>Message</th>
-    </tr> -->
+    <p><br /></p>
+    <table id="terminalStyle">
+      {#each logs as log}
+        <tr>
+          <td>{log.message}</td>
+        </tr>
+      {/each}
+    </table>
+  </div>
 
-    {#each logs as log}
-      <tr>
-        <!-- <td
-          ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT"
-          >{log.utcTime.split(".")[0].replace("T", " ")}</a
-          ></td
-          > -->
-        <td>{log.message}</td>
-      </tr>
-    {/each}
-  </table>
+  <div id="priceChart">
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_785e5" />
+      <div class="tradingview-widget-copyright">
+        <a
+          href="https://www.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP"
+          rel="noopener"
+          target="_blank"><span class="blue-text">BTCUSD Chart</span></a
+        > by TradingView
+      </div>
+    </div>
+    <!-- TradingView Widget END -->
+
+    <!-- <embed
+      src="https://www.bybit.com/trade/usdt/BTCUSDT"
+      type="text/html"
+      width="500"
+      height="200"
+    /> -->
+  </div>
 {/if}
 
 <style>
