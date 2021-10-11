@@ -1,4 +1,4 @@
-import { Registry, InvestmentAdvisor, InvestmentAdvisorETHLong, BybitConnector, IPersistenceService, MongoService, IExchangeConnector, VolatilityFarmer, InvestmentAdvisorBTCLongShortExtreme } from "../deps.ts"
+import { Registry, InvestmentAdvisor, ETHLongWithHiddenOverallHedge, BybitConnector, IPersistenceService, MongoService, IExchangeConnector, VolatilityFarmer, InvestmentAdvisorBTCLongShortExtreme } from "../deps.ts"
 
 
 // get parameters
@@ -18,7 +18,7 @@ const registryInvestmentAdvisors = new Registry()
 const registryExchangeConnectors = new Registry()
 const registryPersistenceServices = new Registry()
 
-registryInvestmentAdvisors.register(InvestmentAdvisorETHLong)
+registryInvestmentAdvisors.register(ETHLongWithHiddenOverallHedge)
 registryInvestmentAdvisors.register(InvestmentAdvisor)
 registryInvestmentAdvisors.register(InvestmentAdvisorBTCLongShortExtreme)
 registryExchangeConnectors.register(BybitConnector)
