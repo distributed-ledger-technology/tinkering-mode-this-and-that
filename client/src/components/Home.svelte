@@ -2,7 +2,7 @@
 <script>
   import AccountInfo from "@/components/AccountInfo.svelte";
   import Game from "@/components/Game.svelte";
-  import Show from "@/components/Show.svelte";
+  import DemoAccounts from "@/components/DemoAccounts.svelte";
   import Party from "@/components/Party.svelte";
   import { onMount } from "svelte";
 
@@ -11,11 +11,10 @@
   export let showMode = false;
   let accountInfo;
   let apiKey = "";
-  let demoAPIKeys = [
-    "GCNuPXHiTsX5FTEDhV",
-    "uT3JRHVooieP9FVXH0",
-    "rXv8NgUFMYg6Tlq3hk",
-  ];
+
+  function handleShow() {
+    showMode = !showMode;
+  }
 
   function getDataSourceURL() {
     if (window.location == "http://localhost:3027/") {
@@ -39,15 +38,6 @@
 
   onMount(async () => {
     setInterval(async () => {
-      let counter = 0;
-      if (showMode) {
-        if (counter > demoAPIKeys.length - 1) counter = 0;
-
-        apiKey = demoAPIKeys[counter];
-
-        counter++;
-      }
-
       if (apiKey !== "") {
         await getAccountInfo();
       }
@@ -100,14 +90,15 @@ GCNuPXHiTsX5FTEDhV
     <Game bind:apiKey />
 
     <p><br /></p>
-    <Show bind:apiKey bind:showMode />
-    <p><br /></p>
 
     <a
       target="_blank"
       href="http://localhost:3001/getAssetsUnderManagementDemoAccounts"
       >Assets Under Management - Demo Accounts</a
     >
+    <p />
+    <DemoAccounts />
+    <p><br /></p>
   {:else}
     <Party />
   {/if}

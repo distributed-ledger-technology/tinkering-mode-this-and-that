@@ -20,29 +20,45 @@
   }
 
   function getSentiment() {
-    if (
-      accountInfo.longPositionPNLInPercent > 0 &&
-      accountInfo.shortPositionPNLInPercent > 0
-    )
-      return 0;
-
     if (accountInfo.longPositionSize > accountInfo.shortPositionSize) {
       if (
         accountInfo.longPositionPNLInPercent >
         accountInfo.shortPositionPNLInPercent
       )
+        return 2;
+
+      if (
+        accountInfo.longPositionPNLInPercent > 0 &&
+        accountInfo.shortPositionPNLInPercent > 0
+      )
         return 1;
 
-      return -1;
+      if (
+        accountInfo.shortPositionPNLInPercent >
+        accountInfo.longPositionPNLInPercent
+      )
+        return -1;
     } else if (accountInfo.shortPositionSize > accountInfo.longPositionSize) {
       if (
         accountInfo.shortPositionPNLInPercent >
         accountInfo.longPositionPNLInPercent
       )
+        return 2;
+
+      if (
+        accountInfo.longPositionPNLInPercent > 0 &&
+        accountInfo.shortPositionPNLInPercent > 0
+      )
         return 1;
 
-      return -1;
+      if (
+        accountInfo.longPositionPNLInPercent >
+        accountInfo.shortPositionPNLInPercent
+      )
+        return -1;
     }
+
+    return 0;
   }
 
   // async function allDeals() {
@@ -96,7 +112,8 @@
       class="terminalStyle"
       class:backgroundorangered={sentiment === -1}
       class:backgroundBlack={sentiment === 0}
-      class:backgroundturquoise={sentiment === 1}
+      class:lightskyblue={sentiment === 1}
+      class:backgroundgreen={sentiment === 2}
     >
       {#each logs as log}
         <tr>
@@ -109,6 +126,7 @@
 
 <style>
   table {
+    background-color: violet;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -134,7 +152,12 @@
     background-color: orangered;
   }
 
-  .backgroundturquoise {
+  .backgroundlightskyblue {
+    /* background-color: turquoise; */
+    background-color: lightskyblue;
+  }
+
+  .backgroundgreen {
     /* background-color: turquoise; */
     background-color: green;
   }
