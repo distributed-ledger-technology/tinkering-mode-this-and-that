@@ -1,5 +1,5 @@
-import { json, opine, serveStatic } from "https://deno.land/x/opine@1.7.0/mod.ts"
-import { opineCors } from "https://deno.land/x/cors@v1.2.1/mod.ts";
+import { json, opine, serveStatic } from "../deps.ts"
+import { opineCors } from "../deps.ts";
 import { Service } from "./service.ts"
 import { HouseKeeper } from "./house-keeper.ts";
 

@@ -68,9 +68,9 @@ GCNuPXHiTsX5FTEDhV
     <br />
 
     <!-- This account uses the following strategy {accountInfo.} - for details explore -->
-    This account uses the following strategy: <b>"{accountInfo.strategy}"</b>
+    This account uses: <b>"{accountInfo.strategy}"</b>
     <br />
-    Please add your own strategy
+    Feel free to add your own strategy
     <a
       target="_blank"
       href="https://deno.land/x/exchange_connectors/src/volatility-farming/investment-advisor"

@@ -1,6 +1,6 @@
 
 
-import { Request } from 'https://deno.land/x/request@1.3.0/request.ts'
+import { Request } from '../../deps.ts'
 import { UtilityBox } from '../general-utility-box.ts'
 import { IExchangeConnector } from "./exchange-connector-interface.ts"
 

@@ -80,6 +80,7 @@ export class Service {
 
         }
     }
+
     public async reducePosition(apiKey: string, apiSecret: string, action: string, amount: number, reason: string) {
 
         console.log(`${action} from BTC for ${apiKey} ${apiSecret}`)

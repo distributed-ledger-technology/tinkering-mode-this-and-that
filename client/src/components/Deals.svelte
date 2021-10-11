@@ -1,9 +1,6 @@
 <!-- http://localhost:3001/getAccountInfo/apiKey/GCNuPXHiTsX5FTEDhV -->
 <script>
-  import {
-    SortService,
-    Direction,
-  } from "https://deno.land/x/sort@v1.1.1/mod.ts";
+  import { SortService, Direction } from "../deps.ts";
 
   import { onMount } from "svelte";
 
