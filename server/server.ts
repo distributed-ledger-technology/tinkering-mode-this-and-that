@@ -11,16 +11,9 @@ const pathToFile = `${Deno.cwd()}/client/dist`
 app.use(serveStatic(pathToFile))
 app.use(json());
 
-let statisticsService: any
+let service: Service
 
-let pathToStats = ''
 let mongodbConnectionString = ''
-
-if (Deno.args[0] === '3001') {
-    pathToStats = `${Deno.cwd()}/stats/`
-} else {
-    pathToStats = `${Deno.cwd()}/../deno-cash/cash/stats`
-}
 
 app.get("/", async function (req, res) {
 
@@ -34,7 +27,7 @@ app.get("/", async function (req, res) {
 app.get("/getAccountInfo/apiKey/:apiKey", opineCors(), async function (req, res) {
     console.log(`reading account info for ${req.params.apiKey}`)
     try {
-        res.send(await statisticsService.getAccountInfo(req.params.apiKey, pathToStats));
+        res.send(await service.getAccountInfo(req.params.apiKey));
     } catch (error) {
         res.send("Bitte füge Deinen API Key am Ende der URL ein, um Deine Daten abzurufen.")
     }
@@ -44,7 +37,7 @@ app.get("/getAccountInfo/apiKey/:apiKey", opineCors(), async function (req, res)
 app.get("/getDeals/apiKey/:apiKey", opineCors(), async function (req, res) {
     console.log(`reading deals for ${req.params.apiKey}`)
     try {
-        res.send(await statisticsService.getDeals(req.params.apiKey));
+        res.send(await service.getDeals(req.params.apiKey));
     } catch (error) {
         res.send(`wtf :) ${error.message}`)
     }
@@ -54,7 +47,7 @@ app.get("/getDeals/apiKey/:apiKey", opineCors(), async function (req, res) {
 app.get("/getLogs/apiKey/:apiKey", opineCors(), async function (req, res) {
     console.log(`reading logs for ${req.params.apiKey}`)
     try {
-        res.send(await statisticsService.getLogs(req.params.apiKey));
+        res.send(await service.getLogs(req.params.apiKey));
     } catch (error) {
         res.send(`wtf :) ${error.message}`)
     }
@@ -64,7 +57,7 @@ app.get("/getLogs/apiKey/:apiKey", opineCors(), async function (req, res) {
 app.get("/getAssetsUnderManagementDemoAccounts", opineCors(), async function (req, res) {
 
     try {
-        const assetsUnderManagement = await statisticsService.getAssetsUnderManagement(req.params.apiKey, pathToStats)
+        const assetsUnderManagement = await service.getAssetsUnderManagement()
         let equitySum = 0
         let longPosSum = 0
         let shortPosSum = 0
@@ -84,7 +77,7 @@ app.post("/addToPosition", opineCors(), async function (req, res) {
 
     const reason = `manually triggered deal via ${req.protocol + '://' + req.get('host') + req.originalUrl}`
 
-    await statisticsService.addToPosition(req.body.apiKey, req.body.apiSecret, req.body.action, req.body.amount, reason)
+    await service.addToPosition(req.body.apiKey, req.body.apiSecret, req.body.action, req.body.amount, reason)
 
 })
 
@@ -92,7 +85,7 @@ app.post("/reducePosition", opineCors(), async function (req, res) {
 
     const reason = `manually triggered deal via ${req.protocol + '://' + req.get('host') + req.originalUrl}`
 
-    await statisticsService.reducePosition(req.body.apiKey, req.body.apiSecret, req.body.action, req.body.amount, reason)
+    await service.reducePosition(req.body.apiKey, req.body.apiSecret, req.body.action, req.body.amount, reason)
 
 })
 
@@ -100,7 +93,7 @@ app.post("/reset", opineCors(), async function (req, res) {
 
     const reason = `reset triggered after equity transfer`
 
-    await statisticsService.reset(req.body.apiKey, reason)
+    await service.reset(req.body.apiKey, reason)
 
 })
 
@@ -128,7 +121,7 @@ if (Deno.args[0] === '443') {
     mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
 
     console.log(mongodbConnectionString)
-    statisticsService = new Service(mongodbConnectionString)
+    service = new Service(mongodbConnectionString)
     app.listen(options, () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
 
 } else {
@@ -136,7 +129,7 @@ if (Deno.args[0] === '443') {
     // mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@localhost:27017`
     mongodbConnectionString = `mongodb://${mongoUser}:${mongoPW}@65.21.110.40:27017`
     console.log(mongodbConnectionString)
-    statisticsService = new Service(mongodbConnectionString)
+    service = new Service(mongodbConnectionString)
     app.listen(Number(Deno.args[0]), () => console.log(`server has started on http://localhost:${Deno.args[0]} 🚀`))
 
 }

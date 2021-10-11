@@ -10,14 +10,14 @@ export class HouseKeeper {
 
     public async keepHouse(): Promise<void> {
 
-        await this.deleteOldAccountSpecificData()
+        // await this.deleteOldAccountSpecificData()
 
         setInterval(async () => {
 
             try {
                 await this.deleteOldAccountSpecificData()
             } catch (error) {
-                console.log(`I could not keep the house`)
+                console.log(`I could not keep the house: ${error.message}`)
             }
 
         }, 2 * 60 * 60 * 1000);

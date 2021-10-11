@@ -2,14 +2,20 @@
 <script>
   import AccountInfo from "@/components/AccountInfo.svelte";
   import Game from "@/components/Game.svelte";
+  import Show from "@/components/Show.svelte";
   import Party from "@/components/Party.svelte";
-
   import { onMount } from "svelte";
 
   // import InputField from './InputField.svelte';
 
+  export let showMode = false;
   let accountInfo;
   let apiKey = "";
+  let demoAPIKeys = [
+    "GCNuPXHiTsX5FTEDhV",
+    "uT3JRHVooieP9FVXH0",
+    "rXv8NgUFMYg6Tlq3hk",
+  ];
 
   function getDataSourceURL() {
     if (window.location == "http://localhost:3027/") {
@@ -33,10 +39,19 @@
 
   onMount(async () => {
     setInterval(async () => {
+      let counter = 0;
+      if (showMode) {
+        if (counter > demoAPIKeys.length - 1) counter = 0;
+
+        apiKey = demoAPIKeys[counter];
+
+        counter++;
+      }
+
       if (apiKey !== "") {
         await getAccountInfo();
       }
-    }, 8 * 1000);
+    }, 4 * 1000);
   });
 </script>
 
@@ -84,6 +99,8 @@ GCNuPXHiTsX5FTEDhV
     <br />
     <Game bind:apiKey />
 
+    <p><br /></p>
+    <Show bind:apiKey bind:showMode />
     <p><br /></p>
 
     <a
