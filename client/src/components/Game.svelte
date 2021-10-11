@@ -22,6 +22,10 @@
     process = "reduceshort";
   }
 
+  async function reset() {
+    process = "reset";
+  }
+
   function getOptions() {
     let body = {
       apiKey,
@@ -70,6 +74,19 @@
       `reduce position triggered - shall be visible here in about 8 seconds`
     );
   }
+
+  async function resetNow() {
+    const addurl =
+      window.location == "http://localhost:3027/"
+        ? `http://localhost:3001/reset`
+        : `https://openforce.de/reset`;
+
+    console.log(`calling ${addurl}`);
+
+    fetch(addurl, getOptions());
+
+    alert(`reset triggered - shall be visible here in about 8 seconds`);
+  }
 </script>
 
 <p><br /></p>
@@ -82,6 +99,10 @@
 <button on:click={reduceLongPosition}> Reduce Long Position </button>
 
 <button on:click={reduceShortPosition}> Reduce Short Position </button>
+
+<p />
+
+<button on:click={reset}> Reset after equity tranfer </button>
 
 <p><br /></p>
 
@@ -132,6 +153,21 @@
 
   <button on:click={reduce}>
     {process} by {amount} now
+  </button>
+{/if}
+
+{#if process === "reset"}
+  <input
+    type="text"
+    name=""
+    id="apiSecret"
+    bind:value={apiSecret}
+    placeholder="Enter Your API Secret..."
+  />
+  <br />
+
+  <button on:click={resetNow}>
+    {process} now
   </button>
 {/if}
 

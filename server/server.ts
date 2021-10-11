@@ -96,6 +96,14 @@ app.post("/reducePosition", opineCors(), async function (req, res) {
 
 })
 
+app.post("/reset", opineCors(), async function (req, res) {
+
+    const reason = `reset triggered after equity transfer`
+
+    await statisticsService.reset(req.body.apiKey, reason)
+
+})
+
 const mongoUser = Deno.args[1]
 const mongoPW = Deno.args[2]
 

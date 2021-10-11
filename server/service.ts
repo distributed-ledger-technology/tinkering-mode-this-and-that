@@ -81,6 +81,12 @@ export class Service {
         }
     }
 
+    public async reset(apiKey: string, reason: string) {
+
+        await this.mongoService.deleteLogs(apiKey)
+        await this.mongoService.deleteDeals(apiKey)
+
+    }
     public async reducePosition(apiKey: string, apiSecret: string, action: string, amount: number, reason: string) {
 
         console.log(`${action} from BTC for ${apiKey} ${apiSecret}`)
