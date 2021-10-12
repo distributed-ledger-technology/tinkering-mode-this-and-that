@@ -71,17 +71,11 @@
       const url = getDataSourceURL();
       logs = await (await fetch(url)).json();
 
-      // alert(logs[0]);
-      console.log(logs[0]);
-
       const sortOptions = [
         { fieldName: "utcTime", direction: Direction.ASCENDING },
       ];
 
       logs = SortService.sort(logs, sortOptions);
-
-      // displayedDeals = [...deals];
-      // logs = logs.splice(0, logs.length - 4);
     } catch (error) {
       console.log(error.message);
       alert(`I could not get any data for api key ${accountInfo.apiKey}`);

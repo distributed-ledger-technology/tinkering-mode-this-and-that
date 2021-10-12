@@ -56,6 +56,11 @@
       }
     }, 8 * 1000);
   });
+
+  function getDiffInMinutes(date1, date2) {
+    return (date1.valueOf() - date2.valueOf()) / 1000 / 60;
+  }
+
   // import InputField from './InputField.svelte';
 </script>
 
@@ -79,9 +84,17 @@
     {#each displayedDeals as deal}
       <tr>
         <td
-          ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT"
-            >{deal.utcTime.split(".")[0].replace("T", " ")}</a
-          ></td
+          ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT">
+            <!-- {#if getDiffInMinutes(new Date(), new Date(deal.utcTime)) > 60}
+              {deal.utcTime.split(".")[0].replace("T", " ")} -->
+            {#if getDiffInMinutes(new Date(), new Date(deal.utcTime)) === 1}
+              {Math.floor(getDiffInMinutes(new Date(), new Date(deal.utcTime)))}
+              minute ago
+            {:else}
+              {Math.floor(getDiffInMinutes(new Date(), new Date(deal.utcTime)))}
+              minutes ago
+            {/if}
+          </a></td
         >
         <td>{deal.action}</td>
         <td>{deal.reduceOnly}</td>
