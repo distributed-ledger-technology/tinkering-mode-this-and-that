@@ -9,15 +9,48 @@
   // import InputField from './InputField.svelte';
 </script>
 
-<h2>General Account Info</h2>
+<h2>Short Term Gambling Investments</h2>
 
 <table>
   <tr>
     <th>Equity</th>
     <th>Available</th>
-    <th>Long Position Size</th>
+    <th>Long BTC (unr. PNL)</th>
+    <th>Short BTC (unr. PNL)</th>
+    <th>Long ETH (unr. PNL)</th>
+  </tr>
+
+  <tr>
+    <td>{accountInfo.equity.toFixed(2)}</td>
+    <td>{accountInfo.avaliableBalance.toFixed(2)}</td>
+    <td
+      >{accountInfo.longPositionSize} ({accountInfo.longPositionPNLInPercent.toFixed(
+        2
+      )})
+    </td>
+    <td
+      >{accountInfo.shortPositionSize} ({accountInfo.shortPositionPNLInPercent.toFixed(
+        2
+      )}</td
+    >
+    <td
+      >{accountInfo.stabilityPositionSize} ({accountInfo.stabilityPositionPNL.toFixed(
+        2
+      )})</td
+    >
+  </tr>
+</table>
+
+<!-- <p></p>
+<h2>Long Term Investments</h2>
+
+<table>
+  <tr>
+    <th>Equity</th>
+    <th>Available</th>
+    <th>Long BTC Position Size</th>
     <th>Unrealized Long Position PNL in %</th>
-    <th>Short Position Size</th>
+    <th>Short BTC Position Size</th>
     <th>Unrealized Short Position PNL %</th>
   </tr>
 
@@ -29,7 +62,7 @@
     <td>{accountInfo.shortPositionSize}</td>
     <td>{accountInfo.shortPositionPNLInPercent.toFixed(2)}</td>
   </tr>
-</table>
+</table> -->
 
 <p><br /></p>
 
