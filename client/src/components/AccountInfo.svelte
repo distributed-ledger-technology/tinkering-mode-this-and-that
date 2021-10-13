@@ -9,7 +9,7 @@
   // import InputField from './InputField.svelte';
 </script>
 
-<h2>Short Term Gambling Investments</h2>
+<h2>Account Info</h2>
 
 <table>
   <tr>
@@ -17,7 +17,7 @@
     <th>Available</th>
     <th>Long BTC (unr. PNL)</th>
     <th>Short BTC (unr. PNL)</th>
-    <th>Long ETH (unr. PNL)</th>
+    <th>Long ETH for Stability </th>
   </tr>
 
   <tr>
@@ -31,7 +31,7 @@
     <td
       >{accountInfo.shortPositionSize} ({accountInfo.shortPositionPNLInPercent.toFixed(
         2
-      )}</td
+      )})</td
     >
     <td
       >{accountInfo.stabilityPositionSize} ({accountInfo.stabilityPositionPNL.toFixed(
