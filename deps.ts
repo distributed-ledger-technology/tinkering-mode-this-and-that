@@ -1,5 +1,5 @@
-export * from "https://deno.land/x/exchange_connectors@v1.9.2/mod-bybit.ts"
-export * from "https://deno.land/x/exchange_connectors@v1.9.2/mod-volatility-farmer.ts"
+export * from "https://deno.land/x/exchange_connectors@v1.9.3/mod-bybit.ts"
+export * from "https://deno.land/x/exchange_connectors@v1.9.3/mod-volatility-farmer.ts"
 
 export { Registry } from "https://deno.land/x/injector@v1.3.0/mod.ts"
 export { hmac } from "https://deno.land/x/hmac@v2.0.1/mod.ts"
