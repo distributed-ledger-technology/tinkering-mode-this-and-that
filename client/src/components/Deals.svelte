@@ -84,9 +84,11 @@
     {#each displayedDeals as deal}
       <tr>
         <td
-          ><a target="_blank" href="https://www.bybit.com/trade/usdt/BTCUSDT">
-            <!-- {#if getDiffInMinutes(new Date(), new Date(deal.utcTime)) > 60}
-              {deal.utcTime.split(".")[0].replace("T", " ")} -->
+          ><a
+            target="_blank"
+            href="https://www.bybit.com/trade/usdt/BTCUSDT"
+            title="UTC: {deal.utcTime.split('.')[0].replace('T', ' ')}"
+          >
             {#if getDiffInMinutes(new Date(), new Date(deal.utcTime)) === 1}
               {Math.floor(getDiffInMinutes(new Date(), new Date(deal.utcTime)))}
               minute ago

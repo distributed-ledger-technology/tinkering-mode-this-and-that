@@ -106,7 +106,7 @@
       class="terminalStyle"
       class:backgroundorangered={sentiment === -1}
       class:backgroundBlack={sentiment === 0}
-      class:lightskyblue={sentiment === 1}
+      class:backgroundlightskyblue={sentiment === 1}
       class:backgroundgreen={sentiment === 2}
     >
       {#each logs as log}
