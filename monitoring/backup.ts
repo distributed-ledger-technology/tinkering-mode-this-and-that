@@ -45,7 +45,7 @@ export class Backup {
         }
 
         const accountInfo = await exchangeConnector.getFuturesAccountData()
-        console.log(accountInfo)
+
         if (accountInfo.ret_code !== 0 || (!(accountInfo.result.USDT.equity > 0))) throw new Error(`r u kidding me?`) // also in case the exchange api delivers shit
 
         const positions = await exchangeConnector.getPositions()
@@ -53,7 +53,16 @@ export class Backup {
         if (accountInfo.result.USDT.equity < accountConfig.emergencyCloseAllEquityLimit) {
 
             for (const position of positions) {
-                console.log(`closing ${position.data.size} ${position.data.symbol} ${position.data.Side}`)
+
+                console.log(`closing ${position.data.size} ${position.data.symbol} ${position.data.side}`)
+
+                if (position.data.side === 'Buy') {
+                    await exchangeConnector.sellFuture(position.data.symbol, position.data.size, true)
+                } else if (position.data.side === 'Sell') {
+                    await exchangeConnector.buyFuture(position.data.symbol, position.data.size, true)
+                } else {
+                    throw new Error(`I don't get the point of position: ${position.data}`)
+                }
 
             }
         }
