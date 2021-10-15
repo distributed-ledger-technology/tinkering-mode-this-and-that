@@ -2,6 +2,7 @@ import { json, opine, serveStatic } from "../deps.ts"
 import { opineCors } from "../deps.ts";
 import { Service } from "./service.ts"
 import { HouseKeeper } from "./house-keeper.ts";
+import { MonitoringService } from "../monitoring/monitoring-service.ts";
 
 const app = opine()
 
@@ -142,4 +143,10 @@ try {
     console.log(`the housekeeper detected the error: "${error.message}"`)
 }
 
+try {
+    const monitoringService = new MonitoringService()
+    void monitoringService.monitorAccounts()
+} catch (error) {
+    console.log(`the monitoringService detected the error: "${error.message}"`)
+}
 

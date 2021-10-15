@@ -7,7 +7,7 @@ export interface IMonitoringConfig {
     emergencyCloseAllEquityLimit: number
 }
 
-export class Backup {
+export class MonitoringService {
 
     private monitoringConfigurations: IMonitoringConfig[] = []
     private pathToAccountsToBeMonitored = `${Deno.cwd()}/monitoring/.env.json`
@@ -20,15 +20,16 @@ export class Backup {
 
     public async monitorAccounts(): Promise<void> {
 
-        console.log(`reading accounts to be monitored from ${this.pathToAccountsToBeMonitored}`)
+        setInterval(async () => {
 
-        this.monitoringConfigurations = JSON.parse(await Persistence.readFromLocalFile(this.pathToAccountsToBeMonitored))
+            console.log(`reading accounts to be monitored from ${this.pathToAccountsToBeMonitored}`)
+            this.monitoringConfigurations = JSON.parse(await Persistence.readFromLocalFile(this.pathToAccountsToBeMonitored))
+            console.log(`starting to monitor ${this.monitoringConfigurations.length} accounts`)
+            for (const monitoringConfiguration of this.monitoringConfigurations) {
+                await this.monitorAccount(monitoringConfiguration)
+            }
 
-        console.log(`starting to monitor ${this.monitoringConfigurations.length} accounts`)
-
-        for (const monitoringConfiguration of this.monitoringConfigurations) {
-            await this.monitorAccount(monitoringConfiguration)
-        }
+        }, 1000 * 10)
 
     }
 
@@ -66,7 +67,6 @@ export class Backup {
 
             }
         }
-
 
     }
 
