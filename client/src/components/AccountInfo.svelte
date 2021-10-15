@@ -34,10 +34,12 @@
       )})</td
     >
     <td
-      >{accountInfo.stabilityPositionSize} ({accountInfo.stabilityPositionPNL.toFixed(
-        2
-      )})</td
-    >
+      ><a target="_blank" href="https://www.bybit.com/trade/usdt/ETHUSDT"
+        >{accountInfo.stabilityPositionSize} ({accountInfo.stabilityPositionPNL.toFixed(
+          2
+        )})</a
+      >
+    </td>
   </tr>
 </table>
 
