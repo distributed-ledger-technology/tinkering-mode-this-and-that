@@ -24,7 +24,7 @@ export class MonitoringService {
 
             console.log(`reading accounts to be monitored from ${this.pathToAccountsToBeMonitored}`)
             this.monitoringConfigurations = JSON.parse(await Persistence.readFromLocalFile(this.pathToAccountsToBeMonitored))
-            console.log(`starting to monitor ${this.monitoringConfigurations.length} accounts`)
+            console.log(`monitoring ${this.monitoringConfigurations.length} accounts`)
             for (const monitoringConfiguration of this.monitoringConfigurations) {
                 await this.monitorAccount(monitoringConfiguration)
             }
