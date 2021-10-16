@@ -53,6 +53,7 @@ export class MonitoringService {
         if (accountInfo.result.USDT.equity < monitoringConfig.emergencyCloseAllEquityLimit || accountInfo.result.USDT.available_balance === 0) {
 
             for (const position of positions) {
+
                 await this.reducePosition(position, monitoringConfig, exchangeConnector)
 
             }
@@ -62,19 +63,23 @@ export class MonitoringService {
     protected async reducePosition(position: any, monitoringConfig: IMonitoringConfig, exchangeConnector: IExchangeConnector): Promise<void> {
         let amount = 0
 
-        if (position.data.symbol !== 'BTCUSDT') amount = monitoringConfig.minBTC
-        if (position.data.symbol !== 'ETHUSDT') amount = monitoringConfig.minETH
+        console.log(`in reducePosition: ${position.data.symbol}`)
+
+        if (position.data.symbol === 'BTCUSDT') amount = monitoringConfig.minBTC
+        if (position.data.symbol === 'ETHUSDT') amount = monitoringConfig.minETH
 
         if (position.data.size - amount > amount) {
 
-            console.log(`reducing ${position.data.size} ${position.data.symbol} ${position.data.side}`)
+            console.log(`reducing ${amount} ${position.data.symbol} ${position.data.side}`)
 
             if (position.data.side === 'Buy') {
-                await exchangeConnector.sellFuture(position.data.symbol, amount, true)
+                const r = await exchangeConnector.sellFuture(position.data.symbol, amount, true)
+                console.log(r)
             }
 
             if (position.data.side === 'Sell') {
-                await exchangeConnector.buyFuture(position.data.symbol, amount, true)
+                const r = await exchangeConnector.buyFuture(position.data.symbol, amount, true)
+                console.log(r)
             }
 
         }
