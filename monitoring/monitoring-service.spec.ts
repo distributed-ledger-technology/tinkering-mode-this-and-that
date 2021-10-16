@@ -3,7 +3,7 @@ import { MonitoringService } from "./monitoring-service.ts";
 
 
 
-Deno.test("should return great investment advices", async () => {
+Deno.test("should monitor accounts properly", async () => {
 
     const monitoringService = new MonitoringService()
 

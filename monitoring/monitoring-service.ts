@@ -5,6 +5,8 @@ export interface IMonitoringConfig {
     apiKey: string
     apiSecret: string
     emergencyCloseAllEquityLimit: number
+    minBTC: number
+    minETH: number
 }
 
 export class MonitoringService {
@@ -20,29 +22,26 @@ export class MonitoringService {
 
     public async monitorAccounts(): Promise<void> {
 
-        setInterval(async () => {
+        console.log(`reading accounts to be monitored from ${this.pathToAccountsToBeMonitored}`)
+        this.monitoringConfigurations = JSON.parse(await Persistence.readFromLocalFile(this.pathToAccountsToBeMonitored))
+        console.log(`monitoring ${this.monitoringConfigurations.length} accounts`)
+        for (const monitoringConfiguration of this.monitoringConfigurations) {
+            await this.monitorAccount(monitoringConfiguration)
+        }
 
-            console.log(`reading accounts to be monitored from ${this.pathToAccountsToBeMonitored}`)
-            this.monitoringConfigurations = JSON.parse(await Persistence.readFromLocalFile(this.pathToAccountsToBeMonitored))
-            console.log(`monitoring ${this.monitoringConfigurations.length} accounts`)
-            for (const monitoringConfiguration of this.monitoringConfigurations) {
-                await this.monitorAccount(monitoringConfiguration)
-            }
-
-        }, 1000 * 10)
 
     }
 
 
-    private async monitorAccount(accountConfig: IMonitoringConfig): Promise<void> {
+    private async monitorAccount(monitoringConfig: IMonitoringConfig): Promise<void> {
 
-        console.log(`monitoring ${accountConfig.apiKey} - would close if equity < ${accountConfig.emergencyCloseAllEquityLimit}`)
+        console.log(`monitoring ${monitoringConfig.apiKey} - would close if equity < ${monitoringConfig.emergencyCloseAllEquityLimit}`)
 
-        let exchangeConnector = this.exchangeConnectors.get(accountConfig.apiKey)
+        let exchangeConnector = this.exchangeConnectors.get(monitoringConfig.apiKey)
 
         if (exchangeConnector === undefined) {
-            exchangeConnector = new BybitConnector(accountConfig.apiKey, accountConfig.apiSecret)
-            this.exchangeConnectors.set(accountConfig.apiKey, exchangeConnector)
+            exchangeConnector = new BybitConnector(monitoringConfig.apiKey, monitoringConfig.apiSecret)
+            this.exchangeConnectors.set(monitoringConfig.apiKey, exchangeConnector)
         }
 
         const accountInfo = await exchangeConnector.getFuturesAccountData()
@@ -51,25 +50,33 @@ export class MonitoringService {
 
         const positions = await exchangeConnector.getPositions()
 
-        if (accountInfo.result.USDT.equity < accountConfig.emergencyCloseAllEquityLimit || accountInfo.result.USDT.available_balance === 0) {
+        if (accountInfo.result.USDT.equity < monitoringConfig.emergencyCloseAllEquityLimit || accountInfo.result.USDT.available_balance === 0) {
 
             for (const position of positions) {
-
-                if (position.data.symbol !== 'BTCUSDT') {
-
-                    console.log(`closing ${position.data.size} ${position.data.symbol} ${position.data.side}`)
-
-                    if (position.data.side === 'Buy') {
-                        await exchangeConnector.sellFuture(position.data.symbol, position.data.size, true)
-                    } else if (position.data.side === 'Sell') {
-                        await exchangeConnector.buyFuture(position.data.symbol, position.data.size, true)
-                    } else {
-                        throw new Error(`I don't get the point of position: ${position.data}`)
-                    }
-
-                }
+                await this.reducePosition(position, monitoringConfig, exchangeConnector)
 
             }
+        }
+    }
+
+    protected async reducePosition(position: any, monitoringConfig: IMonitoringConfig, exchangeConnector: IExchangeConnector): Promise<void> {
+        let amount = 0
+
+        if (position.data.symbol !== 'BTCUSDT') amount = monitoringConfig.minBTC
+        if (position.data.symbol !== 'ETHUSDT') amount = monitoringConfig.minETH
+
+        if (position.data.size - amount > amount) {
+
+            console.log(`reducing ${position.data.size} ${position.data.symbol} ${position.data.side}`)
+
+            if (position.data.side === 'Buy') {
+                await exchangeConnector.sellFuture(position.data.symbol, amount, true)
+            }
+
+            if (position.data.side === 'Sell') {
+                await exchangeConnector.buyFuture(position.data.symbol, amount, true)
+            }
+
         }
 
     }

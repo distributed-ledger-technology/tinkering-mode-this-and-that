@@ -145,7 +145,11 @@ try {
 
 try {
     const monitoringService = new MonitoringService()
-    void monitoringService.monitorAccounts()
+
+    setInterval(async () => {
+        void monitoringService.monitorAccounts()
+    }, 1000 * 5)
+
 } catch (error) {
     console.log(`the monitoringService detected the error: "${error.message}"`)
 }
