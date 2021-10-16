@@ -4,7 +4,7 @@ import { BybitConnector, IExchangeConnector } from "./deps.ts"
 export interface IMonitoringConfig {
     apiKey: string
     apiSecret: string
-    emergencyCloseAllEquityLimit: number
+    // emergencyCloseAllEquityLimit: number
     minBTC: number
     minETH: number
 }
@@ -35,7 +35,7 @@ export class MonitoringService {
 
     private async monitorAccount(monitoringConfig: IMonitoringConfig): Promise<void> {
 
-        console.log(`monitoring ${monitoringConfig.apiKey} - would close if equity < ${monitoringConfig.emergencyCloseAllEquityLimit}`)
+        console.log(`monitoring ${monitoringConfig.apiKey} - would reduce if aB === 0`)
 
         let exchangeConnector = this.exchangeConnectors.get(monitoringConfig.apiKey)
 
@@ -50,14 +50,29 @@ export class MonitoringService {
 
         const positions = await exchangeConnector.getPositions()
 
-        if (accountInfo.result.USDT.equity < monitoringConfig.emergencyCloseAllEquityLimit || accountInfo.result.USDT.available_balance === 0) {
+        if (accountInfo.result.USDT.available_balance === 0) {
 
             for (const position of positions) {
 
                 await this.reducePosition(position, monitoringConfig, exchangeConnector)
 
             }
+
+        } else {
+
+            const liquidityLevel = (accountInfo.result.USDT.available_balance / accountInfo.result.USDT.equity) * 20
+
+            if (liquidityLevel > 19) {
+                await this.addToETHPosition(exchangeConnector)
+            }
+
         }
+    }
+
+    protected async addToETHPosition(exchangeConnector: IExchangeConnector): Promise<void> {
+        const r = await exchangeConnector.buyFuture('ETHUSDT', 0.01, false)
+        console.log(r)
+
     }
 
     protected async reducePosition(position: any, monitoringConfig: IMonitoringConfig, exchangeConnector: IExchangeConnector): Promise<void> {
