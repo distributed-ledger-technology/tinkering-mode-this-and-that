@@ -51,18 +51,22 @@ export class MonitoringService {
 
         const positions = await exchangeConnector.getPositions()
 
-        if (accountInfo.result.USDT.equity < accountConfig.emergencyCloseAllEquityLimit) {
+        if (accountInfo.result.USDT.equity < accountConfig.emergencyCloseAllEquityLimit || accountInfo.result.USDT.available_balance === 0) {
 
             for (const position of positions) {
 
-                console.log(`closing ${position.data.size} ${position.data.symbol} ${position.data.side}`)
+                if (position.data.symbol !== 'BTCUSDT') {
 
-                if (position.data.side === 'Buy') {
-                    await exchangeConnector.sellFuture(position.data.symbol, position.data.size, true)
-                } else if (position.data.side === 'Sell') {
-                    await exchangeConnector.buyFuture(position.data.symbol, position.data.size, true)
-                } else {
-                    throw new Error(`I don't get the point of position: ${position.data}`)
+                    console.log(`closing ${position.data.size} ${position.data.symbol} ${position.data.side}`)
+
+                    if (position.data.side === 'Buy') {
+                        await exchangeConnector.sellFuture(position.data.symbol, position.data.size, true)
+                    } else if (position.data.side === 'Sell') {
+                        await exchangeConnector.buyFuture(position.data.symbol, position.data.size, true)
+                    } else {
+                        throw new Error(`I don't get the point of position: ${position.data}`)
+                    }
+
                 }
 
             }
