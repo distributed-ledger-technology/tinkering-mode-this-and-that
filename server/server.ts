@@ -9,7 +9,7 @@ const app = opine()
 app.use(opineCors()) // decided to do this for single routes explicitely
 
 const pathToFile = `${Deno.cwd()}/client/dist`
-app.use(serveStatic(pathToFile))
+// app.use(serveStatic(pathToFile)) // redirecting until the move to the decentralized page provisioning is completed
 app.use(json());
 
 let service: Service
