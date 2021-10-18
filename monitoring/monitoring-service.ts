@@ -29,7 +29,6 @@ export class MonitoringService {
             await this.monitorAccount(monitoringConfiguration)
         }
 
-
     }
 
 
