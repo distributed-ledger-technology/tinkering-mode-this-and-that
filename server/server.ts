@@ -9,7 +9,7 @@ const app = opine()
 app.use(opineCors()) // decided to do this for single routes explicitely
 
 const pathToFile = `${Deno.cwd()}/client/dist`
-// app.use(serveStatic(pathToFile)) // redirecting until the move to the decentralized page provisioning is completed
+app.use(serveStatic(pathToFile)) // redirecting until the move to the decentralized page provisioning is completed
 app.use(json());
 
 let service: Service
@@ -18,9 +18,9 @@ let mongodbConnectionString = ''
 
 app.get("/", async function (req, res) {
 
-    res.redirect('https://ethereum.org') // redirecting until the move to the decentralized page provisioning is completed
-    // console.log(pathToFile)
-    // res.sendFile(`${pathToFile}/index.html`)
+    // res.redirect('https://ethereum.org') // redirecting until the move to the decentralized page provisioning is completed
+    console.log(pathToFile)
+    res.sendFile(`${pathToFile}/index.html`)
 
 })
 
