@@ -46,14 +46,14 @@
 </script>
 
 <h1>VoFarm (Centralized)</h1>
+
+Enter Your
 <a
   target="_blank"
-  href="https://github.com/distributed-ledger-technology/cash-services"
+  href="https://github.com/distributed-ledger-technology/cash-services/blob/main/README.md"
 >
-  <h3>Contact</h3>
+  API Key
 </a>
-
-Enter Your API Key
 
 <p />
 
