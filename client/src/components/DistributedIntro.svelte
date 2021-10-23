@@ -5,12 +5,11 @@
     <h1>VoFarm (Decentralized)</h1>
 
     <p />
-    Decentralized Volatility Farming allows you to trade like a pro - automated and
-    with a huge amount of decentralized capital.
-
-    <h3>How it works</h3>
-    Every developer can implement an automated trading strategy and create a VoFarm
-    Capital Pool which will apply this strategy.
+    Decentralized Volatility Farming (VoFarm) allows groups of people to trade like
+    a pro - automated and with a huge amount of decentralized capital.
+    <p />
+    Every developer can implement an automated trading strategy and create a
+    VoFarm Capital Pool which will apply this strategy.
     <p />
     For each strategy the developer earns 2 Open Source Coins and a percentage of
     the gains which the corresponding capital pool makes.

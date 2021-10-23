@@ -50,9 +50,42 @@
                 }
             });
     }
+
+    function tbdInfo() {
+        alert(
+            `currently only the centralized version is fully functional - we are working on the decentralized solution`
+        );
+    }
 </script>
 
 <div id="metamask">
+    <table>
+        <tr>
+            <th>VoFarm Capital Pool</th>
+            <th>Amount At Risk</th>
+            <th>Corresponding Strategy</th>
+            <th>Wallet of Developer</th>
+            <th>Your Options</th>
+        </tr>
+
+        <td> BTC Long- Short & ETH Long for Stability </td>
+        <td> 200 ETH </td>
+        <td>
+            <a href="tbd" target="_blank"
+                ><button on:click={tbdInfo}>See Code</button></a
+            >
+        </td>
+        <td> 0x7a915e362353d72570dcf90aa5baa1c5b341c7aa </td>
+        <td>
+            <button on:click={tbdInfo}>Invest</button>
+            <button on:click={tbdInfo}>Withdraw</button>
+            <button on:click={tbdInfo}>Donate to Developer</button>
+        </td>
+    </table>
+
+    <p />
+    <br />
+    <p />
     {#if message === ""}
         <table>
             <tr>
