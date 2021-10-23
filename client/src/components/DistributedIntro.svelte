@@ -4,11 +4,16 @@
 <div id="intro">
     <h1>VoFarm (Decentralized)</h1>
 
-    You can add VoFarm Strategies in order to support the VoFarm users and
-    yourself.
     <p />
-    For each strategy you add, you earn 2 Open Source Coins + your earn a percentage
-    of the gains which the corresponding capital pool makes.
+    Decentralized Volatility Farming allows you to trade like a pro - automated and
+    with a huge amount of decentralized capital.
+
+    <h3>How it works</h3>
+    Every developer can implement an automated trading strategy and create a VoFarm
+    Capital Pool which will apply this strategy.
+    <p />
+    For each strategy the developer earns 2 Open Source Coins and a percentage of
+    the gains which the corresponding capital pool makes.
 
     <p />
 </div>

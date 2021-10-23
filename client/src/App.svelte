@@ -16,6 +16,7 @@
     <!-- <DistributedIntro /> -->
     <DistributedIntro />
     <p />
+    <p />
     <Metamask />
   </main>
 </body>
