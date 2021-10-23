@@ -119,6 +119,8 @@
                 <th>Has Browserwallet</th>
                 <th>chainId</th>
                 <th>connectedAccount</th>
+                <th>OSC Balance</th>
+                <th>Capital At Risk</th>
             </tr>
 
             <td>
@@ -135,6 +137,8 @@
                     {connectedAccount}
                 </a>
             </td>
+            <td> 2 OSC </td>
+            <td> 10 ETH </td>
         </table>
     {:else}
         {message}
