@@ -24,7 +24,7 @@
                     console.error(err);
                 });
         } else {
-            message = `You do not have an Ethereum Browserwallet installed yet. Option 1: Use https://brave.com Option 2: Install https://metamask.io`;
+            message = `In order to use this service, you need an Ethereum Browserwallet.`;
         }
         complete = true;
 
@@ -91,6 +91,26 @@
     </table>
 
     <p />
+    Implement your own
+    <a
+        href="https://github.com/distributed-ledger-technology/exchange-connectors/blob/main/src/volatility-farming/investment-advisor/alternative-investment-advisors/investment-advisor-BTC-long-short-extreme.ts"
+        target="_blank">VoFarm strategy</a
+    >
+    and add it to the
+    <b> Ethereum Open Source Code Registry </b>
+    represented by
+    <a
+        href="https://ropsten.etherscan.io/address/0x36cafbdd90458cc4c396c9550031d20490d8d4c9"
+        target="_blank"
+    >
+        this smart contract
+    </a>.
+
+    <p />
+    <button on:click={tbdInfo}>Start Developing</button>
+    <button on:click={tbdInfo}>Add Code To Ethereum Open Source Registry</button
+    >
+    <p />
     <br />
     <p />
     {#if message === ""}
@@ -108,16 +128,27 @@
                 {chainId}
             </td>
             <td>
-                {connectedAccount}
+                <a
+                    href="https://etherscan.io/address/{connectedAccount}"
+                    target="_blank"
+                >
+                    {connectedAccount}
+                </a>
             </td>
         </table>
     {:else}
         {message}
+        <p />
+        Option 1: Use
+        <a href="https://brave.com" target="_blank">https://brave.com</a>
+        <p />
+        Option 2: Use
+        <a href="https://metamask.io" target="_blank">https://metamask.io</a>
     {/if}
 
     <p />
 
-    {#if connectedAccount == "" && complete}
+    {#if connectedAccount == "" && complete && hasBrowserWallet}
         <button on:click={connect}>Connect To Your Browserwallet</button>
     {/if}
 
