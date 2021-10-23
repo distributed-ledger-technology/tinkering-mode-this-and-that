@@ -3,8 +3,7 @@
     import { onMount } from "svelte";
 
     let provider;
-    let currentAccount = "";
-    let isConnected = false;
+    let hasBrowserWallet = false;
     let chainId = "";
     let message = "";
     let connectedAccount = "";
@@ -14,7 +13,7 @@
     onMount(async () => {
         provider = await detectEthereumProvider();
         if (provider) {
-            isConnected = provider.isConnected();
+            hasBrowserWallet = provider.isConnected();
             chainId = await provider.request({
                 method: "eth_chainId",
             });
@@ -89,13 +88,13 @@
     {#if message === ""}
         <table>
             <tr>
-                <th>isConnected</th>
+                <th>Has Browserwallet</th>
                 <th>chainId</th>
                 <th>connectedAccount</th>
             </tr>
 
             <td>
-                {isConnected}
+                {hasBrowserWallet}
             </td>
             <td>
                 {chainId}
