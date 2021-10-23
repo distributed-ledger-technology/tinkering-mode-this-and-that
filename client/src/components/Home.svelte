@@ -45,12 +45,12 @@
   });
 </script>
 
-<h1>Volatility Farming</h1>
+<h1>VoFarm (Centralized)</h1>
 <a
   target="_blank"
   href="https://github.com/distributed-ledger-technology/cash-services"
 >
-  <h3>For Friends Only</h3>
+  <h3>Contact</h3>
 </a>
 
 Enter Your API Key
@@ -113,7 +113,7 @@ GCNuPXHiTsX5FTEDhV
   h1 {
     color: #ff3e00;
     text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+    font-size: 3em;
+    font-weight: 200;
   }
 </style>

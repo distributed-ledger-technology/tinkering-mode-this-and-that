@@ -1,30 +1,30 @@
 <script>
   import Home from "@/components/Home.svelte";
-  // import { page } from '$app/stores'
+  // import Metamask from "@/components/Metamask.svelte";
   import { fade } from "svelte/transition";
-
-  // const apiKey = $page.query.get('apiKey')
-
-// let apiKey = 123
-
+  // import Metamask from "./components/Metamask.svelte";
+  import DistributedIntro from "./components/DistributedIntro.svelte";
+  import Metamask from "./components/Metamask.svelte";
 </script>
 
 <body>
-  
-
   <main transition:fade>
-    <Home/>
-    <p><br></p>
-    
+    <Home />
+    <p><br /></p>
+
+    <!-- <Metamask /> -->
+    <!-- <DistributedIntro /> -->
+    <DistributedIntro />
+    <p />
+    <Metamask />
   </main>
 </body>
 
 <style>
+  body {
+    overflow: scroll; /* Show scrollbars */
+  }
 
-body {
-  overflow: scroll; /* Show scrollbars */
-}
-  
   main {
     text-align: center;
     padding: 1em;
