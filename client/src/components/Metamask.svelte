@@ -70,11 +70,19 @@
         <td> BTC Long- Short & ETH Long for Stability </td>
         <td> 200 ETH </td>
         <td>
-            <a href="tbd" target="_blank"
-                ><button on:click={tbdInfo}>See Code</button></a
+            <a
+                href="https://github.com/distributed-ledger-technology/exchange-connectors/blob/main/src/volatility-farming/investment-advisor/alternative-investment-advisors/investment-advisor-BTC-long-short-extreme.ts"
+                target="_blank">See Code</a
             >
         </td>
-        <td> 0x7a915e362353d72570dcf90aa5baa1c5b341c7aa </td>
+        <td>
+            <a
+                href="https://etherscan.io/address/0x7a915e362353d72570dcf90aa5baa1c5b341c7aa"
+                target="_blank"
+            >
+                0x7a915e362353d72570dcf90aa5baa1c5b341c7aa
+            </a>
+        </td>
         <td>
             <button on:click={tbdInfo}>Invest</button>
             <button on:click={tbdInfo}>Withdraw</button>
