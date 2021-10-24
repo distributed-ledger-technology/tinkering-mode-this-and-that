@@ -57,6 +57,8 @@
     }
 </script>
 
+<h4>Tinkering Mode</h4>
+
 <div id="metamask">
     <table>
         <tr>
@@ -113,13 +115,15 @@
     <p />
     <br />
     <p />
+
+    <h4>Optimize Metamask Interaction</h4>
     {#if message === ""}
         <table>
             <tr>
                 <th>Has Browserwallet</th>
                 <th>chainId</th>
                 <th>connectedAccount</th>
-                <th>OSC Balance</th>
+                <th>Open Source Coin Balance</th>
                 <th>Capital At Risk</th>
             </tr>
 

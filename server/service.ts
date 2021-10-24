@@ -26,6 +26,14 @@ export class Service {
 
     }
 
+    public async getOSCBalance(walletAddress: string): Promise<number> {
+
+        console.log(walletAddress)
+
+        return 2
+
+    }
+
     public async getLogs(apiKey: string): Promise<any[]> {
 
         const accountInfoFromDB = await this.mongoService.readLogs(apiKey)

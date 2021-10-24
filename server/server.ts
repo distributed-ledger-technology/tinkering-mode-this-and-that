@@ -44,6 +44,16 @@ app.get("/getDeals/apiKey/:apiKey", opineCors(), async function (req, res) {
     }
 })
 
+// http://localhost:3001/getOSCBalance/walletAddress/0x7A915e362353d72570dcf90aa5BAA1C5B341c7AA
+app.get("/getOSCBalance/walletAddress/:walletAddress", opineCors(), async function (req, res) {
+    console.log(`reading OSC Balance for ${req.params.walletAddress}`)
+    try {
+        res.send(await service.getOSCBalance(req.params.apiKey));
+    } catch (error) {
+        res.send(`wtf :) ${error.message}`)
+    }
+})
+
 // http://localhost:3001/getLogs/apiKey/LrOBK76cwtcaetdcxo
 app.get("/getLogs/apiKey/:apiKey", opineCors(), async function (req, res) {
     console.log(`reading logs for ${req.params.apiKey}`)

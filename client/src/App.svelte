@@ -2,6 +2,7 @@
   import Home from "@/components/Home.svelte";
   // import Metamask from "@/components/Metamask.svelte";
   import { fade } from "svelte/transition";
+  import CurrentChallenges from "./components/CurrentChallenges.svelte";
   // import Metamask from "./components/Metamask.svelte";
   import DistributedIntro from "./components/DistributedIntro.svelte";
   import Metamask from "./components/Metamask.svelte";
@@ -15,6 +16,10 @@
     <!-- <Metamask /> -->
     <!-- <DistributedIntro /> -->
     <DistributedIntro />
+    <p />
+    <br />
+    <p />
+    <CurrentChallenges />
     <p />
     <br />
     <p />
