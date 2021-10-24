@@ -19,11 +19,11 @@
     <p />
     <br />
     <p />
-    <CurrentChallenges />
+    <Metamask />
     <p />
     <br />
     <p />
-    <Metamask />
+    <CurrentChallenges />
   </main>
 </body>
 

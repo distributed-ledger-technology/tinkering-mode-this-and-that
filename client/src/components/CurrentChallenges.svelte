@@ -1,8 +1,6 @@
 <script>
 </script>
 
-<h3>For VoFarm Devs</h3>
-
 <h4>Issues we depend on</h4>
 
 <table>
