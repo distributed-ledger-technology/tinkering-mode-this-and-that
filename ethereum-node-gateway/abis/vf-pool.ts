@@ -8,6 +8,13 @@ export const vfPool = [
     },
     {
         "inputs": [],
+        "name": "executeCurrentInvestmentAdvices",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
         "name": "getInvestors",
         "outputs": [
             {
@@ -19,11 +26,21 @@ export const vfPool = [
                     },
                     {
                         "internalType": "uint256",
-                        "name": "amount",
+                        "name": "capitalAtRisk",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "pnlAbsolute",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "pnlInPercent",
                         "type": "uint256"
                     }
                 ],
-                "internalType": "struct Pool1.Investor[]",
+                "internalType": "struct VFPool.Investor[]",
                 "name": "",
                 "type": "tuple[]"
             }
@@ -42,6 +59,19 @@ export const vfPool = [
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "walletAddress",
+                "type": "address"
+            }
+        ],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     }
 ]
