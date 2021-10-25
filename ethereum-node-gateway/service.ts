@@ -7,7 +7,7 @@ import { codeRegistryABI } from "./abis/code-registry-abi"
 export class CodeRegistryService {
 
     // private smartContractAddressOnMainnet = "tbd"
-    private smartContractAddressOnRopsten = "0x67F46a918a730f1EcdD787Fe15910814a97F2aa0"
+    private smartContractAddressOnRopsten = "0x06BC0caA077ecC4665BB9B343f5Fb306EC874a28"
 
     private web3
     private ourContract
@@ -21,7 +21,7 @@ export class CodeRegistryService {
     }
 
     public async getOSCBalance(walletAddress: string): Promise<number> {
-        const oscBalance = await this.ourContract.methods.getOSCBalance(walletAddress).call();
+        const oscBalance = await this.ourContract.methods.balanceOf(walletAddress).call();
 
         return oscBalance
     }
