@@ -22,8 +22,8 @@ An investment advice can e.g. recommend to:
 
 ### Example VoFarm Strategy
 The example implementation optimizes capital efficiencies around ETH/DAI by basically applying the following moves:  
-1. If market is about to trade sideways --> be an all in 50/50 ETH/DAI Liquidity Provider   
-2. If ETH price is about to rise quickly and significantly --> be an ETH Holder (helping users to avoid [(impermanent) loss](https://finematics.com/impermanent-loss-explained/))   
+1. If ETH price is about to trade sideways --> be an all in 50/50 ETH/DAI Liquidity Provider   
+2. If ETH price is about to rise quickly and significantly --> be an ETH Holder (helping users to avoid ["impermanent loss"](https://finematics.com/impermanent-loss-explained/))   
 3. If ETH price is about to drop quickly and significantly --> be a DAI Holder (preparing to buy back into the game at the right time)  
 
 ### Capital Efficiency Transparency
