@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 // This is a template for all volatility farming capital pools ...
 // only getCurrentInvestmentAdvices() shall be redifined individually
-
 pragma solidity >=0.8.0 < 0.9.0;
 
 contract VFPool {
@@ -11,7 +10,7 @@ contract VFPool {
     enum Side { BUY, SELL }
     
     struct Investor {
-        address walletAddress;
+        address payable walletAddress;
         uint capitalAtRisk;
         uint pnlAbsolute;
         uint pnlInPercent;
@@ -44,7 +43,7 @@ contract VFPool {
      
         require(msg.value >= 1000000000000, "the minimum investment amount is 1000000000000 wei.");
      
-        Investor memory investor = Investor(msg.sender, msg.value, 0, 0);
+        Investor memory investor = Investor(payable(msg.sender), msg.value, 0, 0);
      
         investors.push(investor);
      
@@ -60,13 +59,13 @@ contract VFPool {
     }
  
 
-    function withdraw(address walletAddress) public {
+    function withdraw(address payable walletAddress) public {
         
         string memory walletAddressAsString = string(abi.encodePacked(walletAddress));
         for (uint i = 0; i < investors.length; i++) {
             
             if (compareStrings(string(abi.encodePacked(investors[i].walletAddress)), walletAddressAsString)) {
-                // walletAddress.tranfer();
+                investors[i].walletAddress.transfer(1000000000000);
             }
 
         }
@@ -76,7 +75,7 @@ contract VFPool {
     }
  
 
-    function getCurrentInvestmentAdvices() internal returns (InvestmentAdvice memory) {
+    function getCurrentInvestmentAdvices() internal pure returns (InvestmentAdvice memory) {
         
         InvestmentAdvice memory investmentAdvice = InvestmentAdvice(Side.BUY, 'ETHDAI', 1000000000000000); 
 
@@ -87,7 +86,7 @@ contract VFPool {
     // executed by bot 
     function executeCurrentInvestmentAdvices() public {
         
-       InvestmentAdvice memory currentInvestmentAdvice = getCurrentInvestmentAdvices();
+       // InvestmentAdvice memory currentInvestmentAdvice = getCurrentInvestmentAdvices();
         
         // call uniswap to execute the investment advice
         

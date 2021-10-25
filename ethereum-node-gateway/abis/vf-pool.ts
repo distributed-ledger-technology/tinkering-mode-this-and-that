@@ -20,7 +20,7 @@ export const vfPool = [
             {
                 "components": [
                     {
-                        "internalType": "address",
+                        "internalType": "address payable",
                         "name": "walletAddress",
                         "type": "address"
                     },
@@ -64,7 +64,7 @@ export const vfPool = [
     {
         "inputs": [
             {
-                "internalType": "address",
+                "internalType": "address payable",
                 "name": "walletAddress",
                 "type": "address"
             }
