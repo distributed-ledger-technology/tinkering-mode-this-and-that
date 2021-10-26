@@ -49,7 +49,7 @@ The volatility farming project requires for successful strategies. Therefore the
 
 In order to support developers in coming up with many different successful strategies (which is good for the overall stability), we want to provide features like: 
 
-1. simulation mode / back testing     
+1. simulation mode / back testing - leveraging e.g. the [Uniswap V3 Calculator](https://uniswapv3.flipsidecrypto.com/)      
 2. simplified connection to oracles which reveal fundamentals at early stages   
 3. automated security audits for new pools / strategies before we list them in our VoFarm Strategy Explorer   
 4. optimize the incentive structure to encourage the exploration of new technologies which can not only serve financial improvements but also ecological improvements. 
