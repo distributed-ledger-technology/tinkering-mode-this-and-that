@@ -20,11 +20,16 @@ An investment advice can e.g. recommend to:
 1. Execute a [Single Swap](https://docs.uniswap.org/protocol/guides/swaps/single-swaps)   
 2. [Increase or Decrease Liquidity](https://docs.uniswap.org/protocol/guides/providing-liquidity/increase-liquidity)   
 
-### Example VoFarm Strategy
-The example implementation optimizes capital efficiencies around ETH/DAI by basically applying the following moves:  
+### Example VoFarm Strategies
+#### ETH Price Prediction Based Strategies
+The following example implementation optimizes capital efficiencies around ETH/DAI by basically applying the following moves:  
 1. If ETH price is about to trade sideways --> be an all in 50/50 ETH/DAI [Liquidity Provider](https://docs.uniswap.org/protocol/guides/providing-liquidity/increase-liquidity)   
 2. If ETH price is about to rise quickly and significantly --> be an ETH Holder (helping users to avoid ["impermanent loss"](https://finematics.com/impermanent-loss-explained/))   
 3. If ETH price is about to drop quickly and significantly --> be a DAI Holder (preparing to buy back into the game at the right time)  
+
+#### Uniswap V3 Fee Calculator Based Strategies
+The following example implementation leverages the [Uniswap V3 Fee Calculator](https://uniswapv3.flipsidecrypto.com/) to apply "**flexible** concentrated capital" optimization:  
+tbd
 
 ### Capital Efficiency Transparency
 People can check the **VoFarm Strategy Explorer** to learn about each strategy and its historic capital efficiency to decide into which pool / strategy they want to invest.  
@@ -49,7 +54,7 @@ The volatility farming project requires for successful strategies. Therefore the
 
 In order to support developers in coming up with many different successful strategies (which is good for the overall stability), we want to provide features like: 
 
-1. simulation mode / back testing - leveraging e.g. the [Uniswap V3 Calculator](https://uniswapv3.flipsidecrypto.com/)      
+1. simulation mode / back testing - leveraging e.g. the [Uniswap V3 Fee Calculator](https://uniswapv3.flipsidecrypto.com/)      
 2. simplified connection to oracles which reveal fundamentals at early stages   
 3. automated security audits for new pools / strategies before we list them in our VoFarm Strategy Explorer   
 4. optimize the incentive structure to encourage the exploration of new technologies which can not only serve financial improvements but also ecological improvements. 
