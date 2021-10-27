@@ -7,8 +7,9 @@ A peer 2 peer approach to increase price stability and to reduce price manipulat
 2. Manual and individual trading does not add much value to society, nature, culture and the well-being of individuals   
 3. So called "retail traders" loose money to those who have the power to manipulate markets in classical trading infrastructures    
 4. Introducing "**flexible** concentrated capital" is worth the effort due to layer 2 scaling solutions like Arbitrum   
-5. Volatility Farming at scale has the potential to increase price stability by exploiting non-fundamentals based volatility  
-6. It is a good idea to increase freedom for individuals as more than 51 % of individuals are fair and reasonable people  
+5. Volatility Farming at scale has the potential to increase price stability by exploiting non-fundamentals based volatility   
+6. VoFarm Pools - leveraging Uniswap V3 - can bring the algo- trading community ([hummingbot](https://hummingbot.io/), [coinrule](https://coinrule.com/), ...) to a new level   
+7. It is a good idea to increase freedom for individuals as more than 51 % of individuals are fair and reasonable people  
 
 ## How the VoFarm Works
 Each VoFarm Capital Pool is defined as a smart contract which also defines a VoFarm strategy.   
