@@ -1,14 +1,14 @@
 # Volatility Farming - VoFarm
 
-A peer 2 peer approach to increase price stability and to reduce price manipulation by exploiting non-fundamentals-based volatility.
+A peer 2 peer approach to increase price stability and to reduce price manipulation by exploiting non-fundamentals-based volatility while leveraging and optimizing Uniswap V3.
 
 ## Assumptions
 1. A high percentage of the average volatility is induced by manipulation - not fundamentals  
 2. Manual and individual trading does not add much value to society, nature, culture and the well-being of individuals   
 3. So called "retail traders" loose money to those who have the power to manipulate markets in classical trading infrastructures    
-4. Introducing "**flexible** concentrated capital" is worth the effort due to layer 2 scaling solutions like Arbitrum   
+4. Introducing "**flexible** concentrated capital" is economically more reasonable now due to layer 2 scaling solutions like Arbitrum   
 5. Volatility Farming at scale has the potential to increase price stability by exploiting non-fundamentals based volatility   
-6. VoFarm Pools - leveraging Uniswap V3 - can bring the algo- trading community ([hummingbot](https://hummingbot.io/), [coinrule](https://coinrule.com/), ...) to a new level   
+6. VoFarm Pools - leveraging Uniswap V3 - can bring the algo- trading community ([hummingbot](https://hummingbot.io/), [coinrule](https://coinrule.com/), ...) to a new level (benefitting from volatility AND trading volume)  
 7. It is a good idea to increase freedom for individuals as more than 51 % of individuals are fair and reasonable people  
 
 ## How the VoFarm Works
@@ -20,6 +20,7 @@ The only function which shall be implemented specifically is getCurrentInvestmen
 An investment advice can e.g. recommend to:  
 1. Execute a [Single Swap](https://docs.uniswap.org/protocol/guides/swaps/single-swaps)   
 2. [Increase or Decrease Liquidity](https://docs.uniswap.org/protocol/guides/providing-liquidity/increase-liquidity)   
+3. Hedge against price change risk as Liquidity Provider - for volatile assets e.g. in 0.3 % fee tier 
 
 ### Example VoFarm Strategies
 #### ETH Price Prediction Based Strategies
@@ -32,13 +33,16 @@ The following example implementation optimizes capital efficiencies around ETH/D
 The following example implementation leverages the [Uniswap V3 Fee Calculator](https://uniswapv3.flipsidecrypto.com/) to apply "**flexible** concentrated capital" optimization:  
 tbd
 
+#### Hedge Based Strategies 
+The risk of price changes (aka risk for "impernanent loss" (which might be better called "opportunity cost")) is something which currently prevents many liquidity providers from "going all in" to their specific range. An unopinionated hedge mechanism can neutralize this risk. Its assumption is that it does not know if prices go up or down but that prices go up AND down frequently - compare [Roulette Martingale Strategy](https://www.youtube.com/watch?v=KiIe2LFue5s). 
+
 ### Capital Efficiency Transparency
 People can check the **VoFarm Strategy Explorer** to learn about each strategy and its historic capital efficiency to decide into which pool / strategy they want to invest.  
 
 ### Details
 People can invest an arbitrary amount of Ether to the pool / strategy of their choice and receive a reward depending on the success of the pool which they have chosen proportional to the amount of Ether which they have invested. 
 
-The wallet which deployed the smart contract defining the specific vf pool + strategy, earns 0.01 % of the pool's gains to reward the developer who deployed the corresponding smart contract. This also incentivices developers to come up with better and better strategies etc. 
+The wallet which deployed the smart contract defining the specific vf pool + strategy, earns a percentage (defined in the smart contract) of the pool's gains to reward the developer who deployed the corresponding smart contract. This also incentivices developers to come up with better and better strategies etc. 
 
 To keep things safe and simple the strategy of a specific pool can never be changed. To bet on a different strategy one can move one's capital from one pool to another - ... thanks to layer 2 scaling (e.g. via Arbitrum).
 
