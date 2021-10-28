@@ -82,8 +82,18 @@ We continue developing the solution without direct rewards or grants. If we woul
 
 
 ## Further Links on Background Information  
-*Griffin, John M. and Shams, Amin, Is Bitcoin Really Un-Tethered? (October 28, 2019). Available at SSRN: https://ssrn.com/abstract=3195066 or http://dx.doi.org/10.2139/ssrn.3195066
-*Cryptocurrency Manipulation:
+
+### On Preparing latest Tech for Web3
+For many developers it is clear that [Deno](https://deno.land) is the successor of NodeJS. We support preparing Deno for Web3 - see:   
+1. https://github.com/ChainSafe/web3.js/issues/3700   
+2. https://deno.land/x/exchange_connectors  
+
+
+### On Market Manipulation in CeFi
+*Griffin, John M. and Shams, Amin, Is Bitcoin Really Un-Tethered?   
+(October 28, 2019). Available at SSRN: https://ssrn.com/abstract=3195066 or http://dx.doi.org/10.2139/ssrn.3195066  
+  
+*Cryptocurrency Manipulation:  
 Weili Chen; Jun Wu; Zibin Zheng; Chuan Chen; Yuren Zhou (May 2, 2019). IEEE INFOCOM 2019 - IEEE Conference on Computer Communications.
 NeilGandal, JTHamrick, TylerMoore, TaliOberman (May, 2018). Price manipulation in the Bitcoin ecosystem, Journal of Monetary Economics - ELSEVIER.
 Leonardo Nizzoli, Serena Tardelli, Marco Avvenuti, Stefano Cresci (June 18, 2020). Charting the Landscape of Online Cryptocurrency Manipulation. Publisher: IEEE
