@@ -6,11 +6,12 @@ This shall empower the algo- trading community to benefit from non-fundamentals-
 
 
 ## Assumptions
-
+### In General
+**The CeFi system is not as fair as it should be and the DeFi system is not as efficient as it could be**   
 
 <img src="https://user-images.githubusercontent.com/43786652/139266203-69b676da-f8ed-43f8-a139-79593b64562d.png" alt="drawing" width="700"/>  
 
-**The CeFi system is not as fair as it should be and the DeFi system is not as efficient as it could be**   
+### In Detail
 
 1. A high percentage of the average volatility is induced by manipulation - not fundamentals  
 2. Manual and individual trading does not add much value to society, nature, culture and the well-being of individuals   
@@ -78,3 +79,11 @@ In order to support developers in coming up with many different successful strat
 
 ## Grants 
 We continue developing the solution without direct rewards or grants. If we would receive any grants for this project, we would invest it into dedicated, wisely chosen VoFarm Pools - just like the users of the VoFarm would do. We think this is a good signal - encouraging users to try it out - as we as the development team believe in the success of the VoFarm. We would only withdraw gains which where generated out of those grants as a reward for our work. We are currently figuring out how this can be ensured algorithmically via the corresponding VFPool smart contract.  
+
+
+## Further Links on Background Information  
+*Griffin, John M. and Shams, Amin, Is Bitcoin Really Un-Tethered? (October 28, 2019). Available at SSRN: https://ssrn.com/abstract=3195066 or http://dx.doi.org/10.2139/ssrn.3195066
+*Cryptocurrency Manipulation:
+Weili Chen; Jun Wu; Zibin Zheng; Chuan Chen; Yuren Zhou (May 2, 2019). IEEE INFOCOM 2019 - IEEE Conference on Computer Communications.
+NeilGandal, JTHamrick, TylerMoore, TaliOberman (May, 2018). Price manipulation in the Bitcoin ecosystem, Journal of Monetary Economics - ELSEVIER.
+Leonardo Nizzoli, Serena Tardelli, Marco Avvenuti, Stefano Cresci (June 18, 2020). Charting the Landscape of Online Cryptocurrency Manipulation. Publisher: IEEE
