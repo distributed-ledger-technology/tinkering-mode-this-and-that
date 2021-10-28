@@ -18,7 +18,7 @@ This shall empower the algo- trading community to benefit from non-fundamentals-
 3. So called "retail traders" loose money to those who have the power to manipulate markets in classical trading infrastructures    
 4. Introducing "**flexible** concentrated capital" is economically more reasonable now due to layer 2 scaling solutions like Arbitrum   
 5. Volatility Farming at scale has the potential to increase price stability by exploiting non-fundamentals based volatility   
-6. VoFarm Pools ensure that the algo- trading community (currently using [hummingbot](https://hummingbot.io/), [coinrule](https://coinrule.com/), ...) can )  
+6. VoFarm Pools bring the algo- trading community (currently using [hummingbot](https://hummingbot.io/), [coinrule](https://coinrule.com/), ...) to a new level    
 7. It is a good idea to increase freedom for individuals as more than 51 % of individuals are fair and reasonable people  
 
   
@@ -45,12 +45,13 @@ The following example implementation optimizes capital efficiencies around ETH/D
 2. If ETH price is about to rise quickly and significantly --> be an ETH Holder (helping users to avoid ["impermanent loss"](https://finematics.com/impermanent-loss-explained/))   
 3. If ETH price is about to drop quickly and significantly --> be a DAI Holder (preparing to buy back into the game at the right time)  
 
+#### Hedge Based Strategies 
+The risk of price changes (aka risk for "impernanent loss" (which might be better called "opportunity cost")) is something which currently prevents many liquidity providers from "going all in" to their specific range. An unopinionated hedge mechanism can neutralize this risk. Its assumption is that it does not know if prices go up or down but that prices go up AND down frequently - compare basic [Roulette Martingale Strategy](https://www.youtube.com/watch?v=zTsRGQj6VT4). 
+
+
 #### Uniswap V3 Fee Calculator Based Strategies
 The following example implementation leverages the [Uniswap V3 Fee Calculator](https://uniswapv3.flipsidecrypto.com/) to apply "**flexible** concentrated capital" optimization:  
 tbd
-
-#### Hedge Based Strategies 
-The risk of price changes (aka risk for "impernanent loss" (which might be better called "opportunity cost")) is something which currently prevents many liquidity providers from "going all in" to their specific range. An unopinionated hedge mechanism can neutralize this risk. Its assumption is that it does not know if prices go up or down but that prices go up AND down frequently - compare [Roulette Martingale Strategy](https://www.youtube.com/watch?v=KiIe2LFue5s). 
 
 ### Capital Efficiency Transparency
 People can check the **VoFarm Strategy Explorer** to learn about each strategy and its historic capital efficiency to decide into which pool / strategy they want to invest.  
@@ -72,10 +73,16 @@ The volatility farming project requires for successful strategies. Therefore the
 
 In order to support developers in coming up with many different successful strategies (which is good for the overall stability), we want to provide features like: 
 
-1. simulation mode / back testing - leveraging e.g. the [Uniswap V3 Fee Calculator](https://uniswapv3.flipsidecrypto.com/)      
-2. simplified connection to oracles which reveal fundamentals at early stages   
-3. automated security audits for new pools / strategies before we list them in our VoFarm Strategy Explorer   
-4. optimize the incentive structure to encourage the exploration of new technologies which can not only serve financial improvements but also ecological improvements. 
+1. Templates for Price Risk Insurance (unopinionated Hedges) for LP focused strategies   
+2. Simulation mode / back testing - leveraging e.g. the [Uniswap V3 Fee Calculator](https://uniswapv3.flipsidecrypto.com/)      
+3. simplified connection to oracles which reveal fundamentals at early stages   
+5. automated security audits for new pools / strategies before we list them in our VoFarm Strategy Explorer   
+6. optimize the incentive structure to encourage the exploration of new technologies which can not only serve financial improvements but also ecological and cultural improvements   
+
+
+## Long Term Vision
+It would be cool, if we could contribute to making Uniswap the “One-Stop-Shop Solution” when it comes to optimizing capital efficiencies & risk-/ reward ratios.
+
 
 ## Grants 
 We continue developing the solution without direct rewards or grants. If we would receive any grants for this project, we would invest it into dedicated, wisely chosen VoFarm Pools - just like the users of the VoFarm would do. We think this is a good signal - encouraging users to try it out - as we as the development team believe in the success of the VoFarm. We would only withdraw gains which where generated out of those grants as a reward for our work. We are currently figuring out how this can be ensured algorithmically via the corresponding VFPool smart contract.  
