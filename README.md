@@ -2,16 +2,28 @@
 
 A peer 2 peer approach to increase price stability and to reduce price manipulation by exploiting non-fundamentals-based volatility while leveraging and optimizing Uniswap V3.
 
+This shall empower the algo- trading community to benefit from non-fundamentals-based volatility and from trading volume itself (earning LP Fees) at the same time. 
+
+
 ## Assumptions
+
+
+<img src="https://user-images.githubusercontent.com/43786652/139266203-69b676da-f8ed-43f8-a139-79593b64562d.png" alt="drawing" width="700"/>  
+
+**The CeFi system is not as fair as it should be and the DeFi system is not as efficient as it could be**   
+
 1. A high percentage of the average volatility is induced by manipulation - not fundamentals  
 2. Manual and individual trading does not add much value to society, nature, culture and the well-being of individuals   
 3. So called "retail traders" loose money to those who have the power to manipulate markets in classical trading infrastructures    
 4. Introducing "**flexible** concentrated capital" is economically more reasonable now due to layer 2 scaling solutions like Arbitrum   
 5. Volatility Farming at scale has the potential to increase price stability by exploiting non-fundamentals based volatility   
-6. VoFarm Pools - leveraging Uniswap V3 - can bring the algo- trading community ([hummingbot](https://hummingbot.io/), [coinrule](https://coinrule.com/), ...) to a new level (benefitting from volatility AND trading volume)  
+6. VoFarm Pools ensure that the algo- trading community (currently using [hummingbot](https://hummingbot.io/), [coinrule](https://coinrule.com/), ...) can )  
 7. It is a good idea to increase freedom for individuals as more than 51 % of individuals are fair and reasonable people  
 
+  
+
 ## How the VoFarm Works
+
 Each VoFarm Capital Pool is defined as a smart contract which also defines a VoFarm strategy.   
 
 Each specific VoFarm Pool Smart Contract inherits from the VFPool template "is VFPool" ....  
@@ -22,7 +34,10 @@ An investment advice can e.g. recommend to:
 2. [Increase or Decrease Liquidity](https://docs.uniswap.org/protocol/guides/providing-liquidity/increase-liquidity)   
 3. Hedge against price change risk as Liquidity Provider - for volatile assets e.g. in 0.3 % fee tier 
 
-### Example VoFarm Strategies
+
+### Example VoFarm Pools / Strategies
+<img src="https://user-images.githubusercontent.com/43786652/139266230-d3123e62-098c-466b-8712-915985f8961d.png" alt="drawing" width="700"/>  
+
 #### ETH Price Prediction Based Strategies
 The following example implementation optimizes capital efficiencies around ETH/DAI by basically applying the following moves:  
 1. If ETH price is about to trade sideways --> be an all in 50/50 ETH/DAI [Liquidity Provider](https://docs.uniswap.org/protocol/guides/providing-liquidity/increase-liquidity)   
@@ -46,13 +61,10 @@ The wallet which deployed the smart contract defining the specific vf pool + str
 
 To keep things safe and simple the strategy of a specific pool can never be changed. To bet on a different strategy one can move one's capital from one pool to another - ... thanks to layer 2 scaling (e.g. via Arbitrum).
 
-
 ## Incentive Engineering
+![VF Schaubild 2](https://user-images.githubusercontent.com/43786652/139266218-84fac94e-46df-4cbc-b355-c69cde2865a9.png)
+
 The incentives shall be aligned along decentralization, fairness, simple market access, transparency, ever improving capital efficiencies and wise investments for public goods.     
-
-
-## Grants 
-We continue developing the solution without direct rewards or grants. If we would receive any grants for this project, we would invest it into dedicated, wisely chosen VoFarm Pools - just like the users of the VoFarm would do. We think this is a good signal - encouraging users to try it out - as we as the development team believe in the success of the VoFarm. We would only withdraw gains which where generated out of those grants as a reward for our work. We are currently figuring out how this can be ensured algorithmically via the corresponding VFPool smart contract.  
 
 ## Outlook
 The volatility farming project requires for successful strategies. Therefore the optimization of vf strategies is a long term endeavour to which the whole open source community is invited.  
@@ -63,3 +75,6 @@ In order to support developers in coming up with many different successful strat
 2. simplified connection to oracles which reveal fundamentals at early stages   
 3. automated security audits for new pools / strategies before we list them in our VoFarm Strategy Explorer   
 4. optimize the incentive structure to encourage the exploration of new technologies which can not only serve financial improvements but also ecological improvements. 
+
+## Grants 
+We continue developing the solution without direct rewards or grants. If we would receive any grants for this project, we would invest it into dedicated, wisely chosen VoFarm Pools - just like the users of the VoFarm would do. We think this is a good signal - encouraging users to try it out - as we as the development team believe in the success of the VoFarm. We would only withdraw gains which where generated out of those grants as a reward for our work. We are currently figuring out how this can be ensured algorithmically via the corresponding VFPool smart contract.  
