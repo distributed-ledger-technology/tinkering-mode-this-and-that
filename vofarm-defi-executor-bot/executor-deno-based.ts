@@ -12,7 +12,7 @@ export class VoFarmExecutor {
     private ourContract: any
 
     constructor(providerURL: string) {
-        this.web3 = new Web3((new Web3 as any).providers.HttpProvider(providerURL));
+        this.web3 = new Web3(new (Web3 as any).providers.HttpProvider(providerURL));
         this.ourContract = new this.web3.eth.Contract(vfPoolAbi, this.smartContractAddressOnRopsten)
     }
 
