@@ -6,6 +6,7 @@
   // import Metamask from "./components/Metamask.svelte";
   import DistributedIntro from "./components/DistributedIntro.svelte";
   import Metamask from "./components/Metamask.svelte";
+  import PoolOverview from "./components/PoolOverview.svelte";
 </script>
 
 <body>
@@ -20,6 +21,10 @@
     <br />
     <p />
     <Metamask />
+    <p />
+    <br />
+    <p />
+    <PoolOverview />
     <p />
     <br />
     <p />
