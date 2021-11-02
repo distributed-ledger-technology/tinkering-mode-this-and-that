@@ -5,7 +5,7 @@ import { vfPoolAbi } from "./vf-pool-abi"
 
 export class VoFarmExecutor {
 
-    private smartContractAddressOnRopsten = "0x18ac6B4D887AA30F4080851A4590107ec1e380b7"
+    private smartContractAddressOnRopsten = "0x72a415868095BA20b66dd3F231A46d8C784aE3B3"
 
     private web3: any
     private ourContract: any

@@ -1,12 +1,17 @@
 export const vfPoolAbi = [
     {
         "inputs": [],
-        "name": "decimals",
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [],
+        "name": "DAI",
         "outputs": [
             {
-                "internalType": "uint8",
+                "internalType": "address",
                 "name": "",
-                "type": "uint8"
+                "type": "address"
             }
         ],
         "stateMutability": "view",
@@ -14,12 +19,67 @@ export const vfPoolAbi = [
     },
     {
         "inputs": [],
-        "name": "description",
+        "name": "WETH9",
         "outputs": [
             {
-                "internalType": "string",
+                "internalType": "address",
                 "name": "",
-                "type": "string"
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "address_",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "token_",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount_",
+                "type": "uint256"
+            }
+        ],
+        "name": "addInvestor",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "b",
+                "type": "bytes32"
+            }
+        ],
+        "name": "bytesToUint",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getEthAmount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -29,77 +89,11 @@ export const vfPoolAbi = [
         "inputs": [
             {
                 "internalType": "uint80",
-                "name": "_roundId",
-                "type": "uint80"
-            }
-        ],
-        "name": "getRoundData",
-        "outputs": [
-            {
-                "internalType": "uint80",
                 "name": "roundId",
                 "type": "uint80"
-            },
-            {
-                "internalType": "int256",
-                "name": "answer",
-                "type": "int256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "startedAt",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "updatedAt",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint80",
-                "name": "answeredInRound",
-                "type": "uint80"
             }
         ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "latestRoundData",
-        "outputs": [
-            {
-                "internalType": "uint80",
-                "name": "roundId",
-                "type": "uint80"
-            },
-            {
-                "internalType": "int256",
-                "name": "answer",
-                "type": "int256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "startedAt",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "updatedAt",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint80",
-                "name": "answeredInRound",
-                "type": "uint80"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "version",
+        "name": "getHistoricalPrice",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -108,6 +102,113 @@ export const vfPoolAbi = [
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getInvestors",
+        "outputs": [
+            {
+                "internalType": "address[]",
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getLatestPrice",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+            }
+        ],
+        "name": "getTokenCapital",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "investmentStrat",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "startTransfer",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "poolFee",
+        "outputs": [
+            {
+                "internalType": "uint24",
+                "name": "",
+                "type": "uint24"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "swapRouter",
+        "outputs": [
+            {
+                "internalType": "contract ISwapRouter",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_address",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_token",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "payable",
         "type": "function"
     }
 ]
