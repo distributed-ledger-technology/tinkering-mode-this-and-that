@@ -61,7 +61,7 @@ export class MonitoringService {
 
             const liquidityLevel = (accountInfo.result.USDT.available_balance / accountInfo.result.USDT.equity) * 20
 
-            if (liquidityLevel > 19) {
+            if (liquidityLevel > 19.2) {
                 await this.addToETHPosition(exchangeConnector)
             }
 
