@@ -49,7 +49,7 @@ export class MonitoringService {
 
         const positions = await exchangeConnector.getPositions()
 
-        if (accountInfo.result.USDT.available_balance === 0) {
+        if (accountInfo.result.USDT.available_balance < 20) {
 
             for (const position of positions) {
 
