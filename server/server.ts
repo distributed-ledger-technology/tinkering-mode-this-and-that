@@ -19,8 +19,9 @@ let mongodbConnectionString = ''
 app.get("/", async function (req, res) {
 
     // res.redirect('https://ethereum.org') // redirecting until the move to the decentralized page provisioning is completed
-    console.log(pathToFile)
-    res.sendFile(`${pathToFile}/index.html`)
+    res.redirect('https://ens.domains/') // redirecting until the move to the decentralized page provisioning is completed
+    // console.log(pathToFile)
+    // res.sendFile(`${pathToFile}/index.html`)
 
 })
 
